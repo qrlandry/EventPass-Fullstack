@@ -43,6 +43,15 @@ class Customer(models.Model):
         return self.name
 
 
+class Ticket(models.Model):
+
+    price = models.DecimalField(decimal_places=2, max_digits=10000)
+    seating = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.price
+
+
 class User(AbstractUser):
     name = models.CharField(max_length=150)
     email = models.EmailField(max_length=150, unique=True)
