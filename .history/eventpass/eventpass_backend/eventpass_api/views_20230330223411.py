@@ -13,7 +13,6 @@ class RegisterView(APIView):
         serializer.save()
         return Response(serializer.data)
 
-# Check the database to see if the user exists
 class LoginView(APIView):
     def post(self, req):
         email = req.data['email']
@@ -27,7 +26,6 @@ class LoginView(APIView):
         if not user.check_password(password):
             raise AuthenticationFailed("Incorrect password")
         
-        # Create JWT with user ID as the payload
         payload = {
             'id': user.id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
@@ -44,8 +42,7 @@ class LoginView(APIView):
         }
 
         return response
-
-# Checks if the session is valid and will throw an exception if the token is expired or invalid
+    
 class UserView(APIView):
 
     def get(self, req):
@@ -65,7 +62,6 @@ class UserView(APIView):
 
         return Response(serializer.data)
 
-# Create a response and delete the JWT
 class LogoutView(APIView):
     def post(self, req):
         response = Response()

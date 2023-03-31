@@ -44,8 +44,7 @@ class LoginView(APIView):
         }
 
         return response
-
-# Checks if the session is valid and will throw an exception if the token is expired or invalid
+    
 class UserView(APIView):
 
     def get(self, req):
@@ -65,7 +64,6 @@ class UserView(APIView):
 
         return Response(serializer.data)
 
-# Create a response and delete the JWT
 class LogoutView(APIView):
     def post(self, req):
         response = Response()

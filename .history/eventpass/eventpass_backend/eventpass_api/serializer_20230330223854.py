@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import User
 
-
+# Override the default create() method to handle password encryption
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -10,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}
         }
 
-    # Override the default create() method to handle password encryption
     def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
