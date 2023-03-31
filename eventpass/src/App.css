@@ -6,7 +6,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 15vh;
+  min-height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,10 +17,13 @@
 }
 
 .headline {
-  margin-top: 0;
-  margin-bottom: 1vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 /* main */
+main {
+  overflow: auto;
+}
 
 /* navigation */
 
