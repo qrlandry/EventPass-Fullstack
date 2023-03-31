@@ -7,7 +7,7 @@ class Venue(models.Model):
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=150)
-    zip_code = models.IntegerField(15)
+    zip_code = models.IntegerField()
     capacity = models.IntegerField()
     indoor = models.BooleanField()
     outdoor = models.BooleanField()
