@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { useContext } from "react"
 import { UserContext } from "../UserContext"
 import '../styles/Nav.css'
-import SearchBar from '../components/SearchBar';
 
 
 export default function Nav(){
@@ -34,9 +33,16 @@ export default function Nav(){
             <NavLink to="/standup" className="menu-item">Comedy</NavLink>
           </li>
         </ul>
-        <SearchBar />
+
 
       </div>
+      <div className="top-right">
+      {
+        loggedIn ? 
+        <div className="cart">
+          <NavLink to="/mycart" className="menu-item">Cart</NavLink>
+        </div> : null
+      }  
       {
         !loggedIn ? 
         <div className="signin">
@@ -46,6 +52,8 @@ export default function Nav(){
           <NavLink to="/" className="menu-item" onClick={handleSignout}>Sign Out</NavLink>
         </div>
       }
+      </div>
+
 
 
     </div>
