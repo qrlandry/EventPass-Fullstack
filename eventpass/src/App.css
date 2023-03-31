@@ -16,7 +16,10 @@
   position: sticky;
 }
 
-
+.headline {
+  margin-top: 0;
+  margin-bottom: 1vh;
+}
 /* main */
 
 /* navigation */

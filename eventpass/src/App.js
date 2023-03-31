@@ -1,5 +1,4 @@
 import './App.css';
-import './styles/Footer.css'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import { UserContext } from './UserContext.jsx'
@@ -7,6 +6,7 @@ import Home from './components/Home';
 import Nav from './components/Nav';
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
+import SearchBar from './components/SearchBar';
 
 function App() {
 
@@ -17,13 +17,15 @@ function App() {
       <header className="App-header">
       <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
         <Nav />
+        <h5 className='headline'>The best deals for your best memories</h5>
+        <SearchBar />
       </UserContext.Provider>
       </header>
       <main>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/signin' element={<Login />}/>
-          <Route path='register' element={<Register />}/>
+          <Route path='/register' element={<Register />}/>
         </Routes>
       </main>
       <footer>
