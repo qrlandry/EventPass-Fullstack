@@ -11,6 +11,7 @@ class Venue(models.Model):
     capacity = models.IntegerField()
     indoor = models.BooleanField()
     outdoor = models.BooleanField()
+    photo_url = models.CharField(max_length=500, default='a string')
 
     def __str__(self):
         return self.name
@@ -21,6 +22,7 @@ class Event(models.Model):
         Venue, on_delete=models.CASCADE, related_name='events')
     name = models.CharField(max_length=500)
     datetime = models.DateTimeField()
+    photo_url = models.CharField(max_length=500, default='a string')
 
     def __str__(self):
         return self.name
@@ -33,8 +35,9 @@ class Customer(models.Model):
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=150)
-    zip_code = models.IntegerField(15)
+    zip_code = models.IntegerField()
     purchases = models.CharField(max_length=500)
+    photo_url = models.CharField(max_length=500, default='a string')
 
     def __str__(self):
         return self.name
