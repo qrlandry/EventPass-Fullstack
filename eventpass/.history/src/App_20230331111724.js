@@ -11,7 +11,6 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  
   const handleLogOut = () => {
     setLoggedIn(false);
     localStorage.clear();

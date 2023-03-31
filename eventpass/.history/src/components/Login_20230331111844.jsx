@@ -1,9 +1,8 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import '../styles/Login.css'
 import { UserContext } from '../UserContext'
-import { SignInUser } from '../services/Auth'
 
 export default function Login(){
   let navigate = useNavigate()
@@ -25,6 +24,7 @@ export default function Login(){
     navigate("/");
     console.log("logged in!");
   };
+  }
 
   return (
     <div className="signin-form">
@@ -38,4 +38,5 @@ export default function Login(){
       </form>
     </div>
   )
+
 }

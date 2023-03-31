@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom'
-import { useState , useContext, useEffect} from 'react'
+import { useState } from 'react'
 import { UserContext } from './UserContext.jsx'
 import Home from './components/Home';
 import Nav from './components/Nav';
@@ -11,7 +11,6 @@ import SearchBar from './components/SearchBar';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  
   const handleLogOut = () => {
     setLoggedIn(false);
     localStorage.clear();
@@ -30,18 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value=
-      {{ loggedIn,
-         setLoggedIn,
-         user,
-         setUser,
-         handleLogOut, }}>
       <header className="App-header">
-      
+      <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
         <Nav />
         <h5 className='headline'>The best deals for your best memories</h5>
         <SearchBar />
-      
+      </UserContext.Provider>
       </header>
       <main>
         <Routes>
@@ -57,7 +50,6 @@ function App() {
           
         </div>
       </footer>
-      </UserContext.Provider>
     </div>
   );
 }

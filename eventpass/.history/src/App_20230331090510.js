@@ -1,53 +1,29 @@
 import './App.css';
+import './styles/Footer.css'
 import { Routes, Route } from 'react-router-dom'
-import { useState , useContext, useEffect} from 'react'
+import { useState } from 'react'
 import { UserContext } from './UserContext.jsx'
 import Home from './components/Home';
 import Nav from './components/Nav';
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
-import SearchBar from './components/SearchBar';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
-  
-  const handleLogOut = () => {
-    setLoggedIn(false);
-    localStorage.clear();
-  };
-  // const checkToken = async () => {
-  //   const user = await CheckSession();
-  //   setUser(user);
-  //   setLoggedIn(true);
-  // };
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     checkToken();
-  //   }
-  // }, []);
+
+  const [ loggedIn, setLoggedIn ] = useState(false)
 
   return (
     <div className="App">
-      <UserContext.Provider value=
-      {{ loggedIn,
-         setLoggedIn,
-         user,
-         setUser,
-         handleLogOut, }}>
       <header className="App-header">
-      
+      <UserContext.Provider value={{ loggedIn, setLoggedIn }}>
         <Nav />
-        <h5 className='headline'>The best deals for your best memories</h5>
-        <SearchBar />
-      
+      </UserContext.Provider>
       </header>
       <main>
         <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/signin' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
+          <Route path='register' element={<Register />}/>
         </Routes>
       </main>
       <footer>
@@ -57,7 +33,6 @@ function App() {
           
         </div>
       </footer>
-      </UserContext.Provider>
     </div>
   );
 }
