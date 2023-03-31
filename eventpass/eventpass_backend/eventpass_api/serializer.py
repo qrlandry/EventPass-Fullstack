@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Venue, Event, Customer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -18,3 +18,41 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class VenueSerializer(serializers.HyperlinkedModelSerializer):
+    events = serializers.HyperlinkedRelatedField(
+        view_name='event_detail',
+        many=True,
+        read_only=True
+    )
+
+    class Meta:
+        model = Venue
+        fields = ('id', 'name', 'address', 'city', 'state',
+                  'zip_code', 'capacity', 'indoor', 'outdoor', 'events')
+
+
+class EventSerializer(serializers.HyperlinkedModelSerializer):
+    customers = serializers.HyperlinkedRelatedField(
+        view_name="customer_detail",
+        many=True,
+        read_only=True
+    )
+
+    class Meta:
+        model = Event
+        fields = ('id', 'name', 'datetime', 'customers')
+
+
+class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    events = serializers.HyperlinkedRelatedField(
+        view_name="event_detail",
+        many=True,
+        read_only=True
+    )
+
+    class Meta:
+        model = Customer
+        fields = ('id', 'name', 'address', 'city', 'state',
+                  'zip_code', 'purchases', 'events')

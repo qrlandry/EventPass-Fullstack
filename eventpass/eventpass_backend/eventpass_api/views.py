@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializer import UserSerializer
 from rest_framework.response import Response
-from .models import User
-import jwt, datetime
+from rest_framework import generics
+from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer
+from .models import User, Venue, Event, Customer
+import jwt
+import datetime
 
 # Create and save new user instance to to the database
+
+
 class RegisterView(APIView):
     def post(self, req):
         serializer = UserSerializer(data=req.data)
@@ -14,6 +18,8 @@ class RegisterView(APIView):
         return Response(serializer.data)
 
 # Check the database to see if the user exists
+
+
 class LoginView(APIView):
     def post(self, req):
         email = req.data['email']
@@ -23,10 +29,10 @@ class LoginView(APIView):
 
         if user is None:
             raise AuthenticationFailed("User not found")
-        
+
         if not user.check_password(password):
             raise AuthenticationFailed("Incorrect password")
-        
+
         # Create JWT with user ID as the payload
         payload = {
             'id': user.id,
@@ -46,6 +52,8 @@ class LoginView(APIView):
         return response
 
 # Checks if the session is valid and will throw an exception if the token is expired or invalid
+
+
 class UserView(APIView):
 
     def get(self, req):
@@ -53,12 +61,12 @@ class UserView(APIView):
 
         if not token:
             raise AuthenticationFailed('Unauthenticated')
-        
+
         try:
             payload = jwt.decode(token, 'secret', algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed('Unauthenticated')
-        
+
         user = User.objects.filter(id=payload['id']).first()
 
         serializer = UserSerializer(user)
@@ -66,6 +74,8 @@ class UserView(APIView):
         return Response(serializer.data)
 
 # Create a response and delete the JWT
+
+
 class LogoutView(APIView):
     def post(self, req):
         response = Response()
@@ -74,3 +84,33 @@ class LogoutView(APIView):
             'message': 'success'
         }
         return response
+
+
+class VenueListView(generics.ListCreateAPIView):
+    queryset = Venue.objects.all()
+    serializer_class = VenueSerializer
+
+
+class VenueDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Venue.objects.all()
+    serializer_class = VenueSerializer
+
+
+class EventListView(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+class CustomerListView(generics.ListCreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+
+class CustomerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
