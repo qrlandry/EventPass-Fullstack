@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializer import UserSerializer
+from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer
 from rest_framework.response import Response
 from rest_framework import generics
-from .models import User, Venue
+from .models import User, Venue, Event, Customer
 import jwt
 import datetime
 
@@ -86,6 +86,31 @@ class LogoutView(APIView):
         return response
 
 
-# class VenueList(generics.ListCreateAPIView):
-#     queryset = Venue.objects.all()
-#     serializer_class = VenueSerializer
+class VenueListView(generics.ListCreateAPIView):
+    queryset = Venue.objects.all()
+    serializer_class = VenueSerializer
+
+
+class VenueDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Venue.objects.all()
+    serializer_class = VenueSerializer
+
+
+class EventListView(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+class CustomerListView(generics.ListCreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+
+
+class CustomerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
