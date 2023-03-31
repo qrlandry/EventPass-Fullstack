@@ -27,6 +27,7 @@
   position: absolute;
   top: 1vh;
   right: 1vw;
+  margin-top: 1vh;
 }
 
 ul {
@@ -39,4 +40,12 @@ ul {
 
 ul li {
   margin-right: 2vw;
+  margin-top: 1vh;
+}
+
+ul li:hover,
+.signin:hover,
+.signout:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }

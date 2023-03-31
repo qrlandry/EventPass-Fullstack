@@ -31,7 +31,7 @@ export default function Register(){
         <input type="text" name='lastName' placeholder='last name' id='login-lastName' onChange={handleChange}/>
         <input type="text" name='email' placeholder='email' id='login-email' onChange={handleChange}/>
         <input type="password"  name='password' placeholder='password' id='login-password' onChange={handleChange}/>
-        <p style={{textDecoration:'none', color: 'blue', fontWeight: 'bold', fontSize: '1vh', display: 'block', marginBottom: '1vh'}}>State of Residence: <SelectUSState name='residenceState' id="" className="login-residenceState" onChange={e => setResidence(e.target.value)}/></p>
+        {/* <p style={{textDecoration:'none', color: 'blue', fontWeight: 'bold', fontSize: '1vh', display: 'block', marginBottom: '1vh'}}>State of Residence: <SelectUSState name='residenceState' id="" className="login-residenceState" onChange={e => setResidence(e.target.value)}/></p> */}
         <button type="submit">Next</button>
       </form>
     </div>
