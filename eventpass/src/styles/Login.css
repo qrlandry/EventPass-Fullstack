@@ -1,0 +1,57 @@
+.signin-form,
+.register-form {
+  background-color: aliceblue;
+  width: 40vw;
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  border: 2px solid rgb(244, 244, 244);
+}
+
+input {
+  border: none;
+  padding: 0.5rem 0;
+  margin-bottom: 1vh;
+  border-radius: 12px;
+}
+
+input:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  opacity: 1;
+  transform: translateY(-4.25rem);
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 85%;
+  padding-left: 10px;
+}
+button[type="submit"] {
+  width: 50%;
+  border: none;
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  background-color: rgb(57, 85, 244);
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(117, 136, 240);
+}
+
+.login-residenceState {
+  border: none;
+  border-radius: 12px;
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
+}
