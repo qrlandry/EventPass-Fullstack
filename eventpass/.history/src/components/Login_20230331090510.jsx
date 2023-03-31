@@ -1,30 +1,20 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import '../styles/Login.css'
-import { UserContext } from '../UserContext'
-import { SignInUser } from '../services/Auth'
 
 export default function Login(){
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({email: '', password: ''})
-  const { setUser } = useContext(UserContext);
-  const { setLoggedIn } = useContext(UserContext);
 
   const handleChange = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const payload = await SignInUser(formValues);
-    setFormValues({ username: "", password: "" });
-    setUser(payload);
-    setLoggedIn(true);
-    navigate("/");
-    console.log("logged in!");
-  };
+    navigate('/')
+  }
 
   return (
     <div className="signin-form">
@@ -38,4 +28,5 @@ export default function Login(){
       </form>
     </div>
   )
+
 }
