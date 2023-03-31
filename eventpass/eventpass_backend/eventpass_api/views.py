@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer
 from rest_framework.response import Response
 from rest_framework import generics
+from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer
 from .models import User, Venue, Event, Customer
 import jwt
 import datetime
