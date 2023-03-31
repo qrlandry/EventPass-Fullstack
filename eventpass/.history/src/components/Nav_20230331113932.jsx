@@ -11,12 +11,12 @@ export default function Nav(){
   const navigate = useNavigate()
 
   const { loggedIn, setLoggedIn } = useContext(UserContext)
+  const {vsetUser } = useContext(UserContext)
 
   const handleSignout = async (e) => {
     e.preventDefault()
-    await LogoutUser()
+
     setLoggedIn(false)
-    console.log('logged out!')
     navigate('/')
   }
 

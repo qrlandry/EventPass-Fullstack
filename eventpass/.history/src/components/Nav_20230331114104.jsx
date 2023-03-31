@@ -16,7 +16,6 @@ export default function Nav(){
     e.preventDefault()
     await LogoutUser()
     setLoggedIn(false)
-    console.log('logged out!')
     navigate('/')
   }
 
