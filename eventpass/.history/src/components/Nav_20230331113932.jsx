@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { UserContext } from "../UserContext"
 import { LogoutUser } from '../services/Auth'
 import '../styles/Nav.css'
@@ -9,20 +9,16 @@ import '../styles/Nav.css'
 export default function Nav(){
   
   const navigate = useNavigate()
-  const [ onSignInPage, setOnSignInPage ] = useState(false)
+
   const { loggedIn, setLoggedIn } = useContext(UserContext)
+  const {vsetUser } = useContext(UserContext)
 
   const handleSignout = async (e) => {
     e.preventDefault()
-    await LogoutUser()
+
     setLoggedIn(false)
-    console.log('logged out!')
     navigate('/')
   }
-
-  // const signInClick = () => {
-  //   setOnSignInPage()
-  // }
 
   return(
     <div className="nav-container">
