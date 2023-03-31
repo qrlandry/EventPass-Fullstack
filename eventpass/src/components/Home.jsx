@@ -1,3 +1,5 @@
 export default function Home(){
-  pass
+  return(
+    <h2>This is homepage</h2>
+  )
 }
