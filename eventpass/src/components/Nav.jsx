@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react"
 import { UserContext } from "../UserContext"
 import { LogoutUser } from '../services/Auth'
+import SearchBar from "./SearchBar"
 import '../styles/Nav.css'
 
 
@@ -62,7 +63,9 @@ export default function Nav(){
       }
       </div>
 
+      <h2 className='headline'>The best deals for your best memories</h2>
 
+      <SearchBar />
 
     </div>
   )
