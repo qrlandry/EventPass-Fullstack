@@ -1,5 +1,4 @@
 import './App.css';
-import './styles/Footer.css'
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import { UserContext } from './UserContext.jsx'
