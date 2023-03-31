@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework import generics
-from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer
-from .models import User, Venue, Event, Customer
+from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer, TicketSerializer
+from .models import User, Venue, Event, Customer, Ticket
 import jwt
 import datetime
 
@@ -115,3 +115,13 @@ class CustomerListView(generics.ListCreateAPIView):
 class CustomerDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
+
+
+class TicketListView(generics.ListCreateAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+
+
+class TicketDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer

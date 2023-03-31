@@ -15,5 +15,8 @@ urlpatterns = [
          views.EventDetailView.as_view(), name='event_details'),
     path('customer', views.CustomerListView.as_view(), name='customer_list'),
     path('customer/details/<int:pk>', views.CustomerDetailView.as_view(),
-         name='customer_details')
+         name='customer_details'),
+    path('tickets', views.TicketListView.as_view(), name='ticket_list'),
+    path('ticket/details/<int:pk>',
+         views.TicketDetailView.as_view(), name='ticket_details')
 ]
