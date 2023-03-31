@@ -2,8 +2,9 @@ import { NavLink } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import { useContext } from "react"
 import { UserContext } from "../UserContext"
-import { LogoutUser } from '../services/Auth'
+import { LogoutUser } from "../services/Auth"
 import '../styles/Nav.css'
+import { EagerLoadingError } from "sequelize"
 
 
 export default function Nav(){
@@ -11,13 +12,13 @@ export default function Nav(){
   const navigate = useNavigate()
 
   const { loggedIn, setLoggedIn } = useContext(UserContext)
+  const { setUser } = useContext(UserContext);
 
-  const handleSignout = async (e) => {
-    e.preventDefault()
-    await LogoutUser()
+  const handleSignout = async () => {
+    await LogoutUser();
     setLoggedIn(false)
-    console.log('logged out!')
     navigate('/')
+    console.log("logged out!");
   }
 
   return(

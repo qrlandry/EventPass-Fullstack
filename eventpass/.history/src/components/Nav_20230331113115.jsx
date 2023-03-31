@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import { useContext } from "react"
 import { UserContext } from "../UserContext"
-import { LogoutUser } from '../services/Auth'
+import { LogoutUser } from "../services/Auth"
 import '../styles/Nav.css'
 
 
@@ -12,12 +12,10 @@ export default function Nav(){
 
   const { loggedIn, setLoggedIn } = useContext(UserContext)
 
-  const handleSignout = async (e) => {
-    e.preventDefault()
-    await LogoutUser()
+  const handleSignout = () => {
     setLoggedIn(false)
-    console.log('logged out!')
     navigate('/')
+    console.log("logged out!");
   }
 
   return(
