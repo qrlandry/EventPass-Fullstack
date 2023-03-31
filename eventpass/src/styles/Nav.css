@@ -1,8 +1,11 @@
 .nav-container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   font-size: 1.5vh;
   font-weight: bold;
+  background-color: #282c34;
+  min-height: 25vh;
+  position: relative;
 }
 
 .menu-item {
@@ -23,26 +26,25 @@
   left: 1vw;
 }
 
-/* .signin,
-.signout {
-  position: absolute;
-  top: 1vh;
-  right: 1vw;
-  margin-top: 1vh;
-} */
-
 .top-right {
-  position: absolute;
+  position: sticky;
   top: 1vh;
-  right: 1vw;
-  margin-top: 1vh;
+  margin-right: 1vw;
+  /* margin-top: 1vh; */
   display: flex;
+  justify-content: flex-end;
 }
 
 .signin,
 .signout {
   margin-left: 5px;
 }
+
+.menu-items {
+  position: sticky;
+  margin-left: 1vw;
+}
+
 
 ul {
   list-style-type: none;

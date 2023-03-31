@@ -36,18 +36,19 @@ function App() {
          user,
          setUser,
          handleLogOut, }}>
-      <header className="App-header">
+      {/* <header className="App-header"> */}
       
-        <Nav />
+        {/* <Nav />
         <h5 className='headline'>The best deals for your best memories</h5>
-        <SearchBar />
+        <SearchBar /> */}
       
-      </header>
+      {/* </header> */}
       <main>
         <Routes>
+          <Route path='signin' element={<Login />}/>
+          <Route path='register' element={<Register />}/>
           <Route path='/' element={<Home />}/>
-          <Route path='/signin' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
+
         </Routes>
       </main>
       <footer>
