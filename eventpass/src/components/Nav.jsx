@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react"
 import { UserContext } from "../UserContext"
 import { LogoutUser } from '../services/Auth'
-import SearchBar from "./SearchBar"
+
+// import SearchBar from "./SearchBar"
 import '../styles/Nav.css'
 
 
@@ -27,45 +28,44 @@ export default function Nav(){
 
   return(
     <div className="nav-container">
-      <div className="menu-items">
-        <ul>
-          <li>
-            <NavLink to="/" className="menu-item">EventPass </NavLink>
-          </li>
-          <li>
-            <NavLink to="/concerts" className="menu-item">Concerts</NavLink>
-          </li>
-          <li>
-            <NavLink to="/sports" className="menu-item">Sports</NavLink>
-          </li>
-          <li>
-            <NavLink to="/standup" className="menu-item">Comedy</NavLink>
-          </li>
-        </ul>
+      <div className="nav-links">
+        <div className="menu-items">
+          <ul>
+            <li>
+              <NavLink to="/" className="menu-item" style={{fontStyle: 'italic'}}>EventPass </NavLink>
+            </li>
+            <li>
+              <NavLink to="/concerts" className="menu-item">Concerts</NavLink>
+            </li>
+            <li>
+              <NavLink to="/sports" className="menu-item">Sports</NavLink>
+            </li>
+            <li>
+              <NavLink to="/standup" className="menu-item">Comedy</NavLink>
+            </li>
+          </ul>
 
 
-      </div>
-      <div className="top-right">
-      {
-        loggedIn ? 
-        <div className="cart">
-          <NavLink to="/mycart" className="menu-item">Cart</NavLink>
-        </div> : null
-      }  
-      {
-        !loggedIn ? 
-        <div className="signin">
-          <NavLink to="/signin" className="menu-item">Sign In</NavLink>
-        </div> : 
-        <div className="signout">
-          <NavLink to="/" className="menu-item" onClick={handleSignout}>Sign Out</NavLink>
         </div>
-      }
+        <div className="top-right">
+        {
+          loggedIn ? 
+          <div className="cart">
+            <NavLink to="/cart" className="menu-item">Cart</NavLink>
+          </div> : null
+        }  
+        {
+          !loggedIn ? 
+          <div className="signin">
+            <NavLink to="/signin" className="menu-item">Sign In</NavLink>
+          </div> : 
+          <div className="signout">
+            <NavLink to="/" className="menu-item" onClick={handleSignout}>Sign Out</NavLink>
+          </div>
+        }
+        </div>
       </div>
 
-      <h2 className='headline'>The best deals for your best memories</h2>
-
-      <SearchBar />
 
     </div>
   )
