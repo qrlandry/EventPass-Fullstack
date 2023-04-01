@@ -1,11 +1,12 @@
 .nav-container {
   position: sticky;
   top: 0;
+  width: 100vw;
 }
 
 .nav-links {
   display: flex;
-  width: 99vw;
+  /* width: 99vw; */
   font-size: 1.5vh;
   font-weight: bold;
   background-color: #282c34;
