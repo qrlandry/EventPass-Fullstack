@@ -3,10 +3,9 @@ import { Routes, Route } from 'react-router-dom'
 import { useState , useContext, useEffect} from 'react'
 import { UserContext } from './UserContext.jsx'
 import Home from './components/Home';
-import Nav from './components/Nav';
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
-import SearchBar from './components/SearchBar';
+import Cart from './components/Cart';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -36,19 +35,13 @@ function App() {
          user,
          setUser,
          handleLogOut, }}>
-      {/* <header className="App-header"> */}
-      
-        {/* <Nav />
-        <h5 className='headline'>The best deals for your best memories</h5>
-        <SearchBar /> */}
-      
-      {/* </header> */}
+
       <main>
         <Routes>
           <Route path='signin' element={<Login />}/>
           <Route path='register' element={<Register />}/>
           <Route path='/' element={<Home />}/>
-
+            <Route path='/cart' element={<Cart />}/>
         </Routes>
       </main>
       <footer>
