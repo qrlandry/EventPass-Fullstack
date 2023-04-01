@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Venue, Event, Customer
+from .models import User, Customer, Event, Ticket, Venue
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,15 +34,16 @@ class VenueSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
-    customers = serializers.HyperlinkedRelatedField(
-        view_name="customer_detail",
+    venues = serializers.HyperlinkedRelatedField(
+        view_name='venue_detail',
         many=True,
         read_only=True
     )
 
     class Meta:
         model = Event
-        fields = ('id', 'name', 'datetime', 'photo_url', 'customers')
+        fields = ('id', 'name', 'datetime', 'photo_url',
+                  'venues')
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
@@ -52,7 +53,26 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
+    tickets = serializers.HyperlinkedRelatedField(
+        view_name="ticket_detail",
+        many=True,
+        read_only=True
+    )
+
     class Meta:
         model = Customer
         fields = ('id', 'name', 'address', 'city', 'state',
-                  'zip_code', 'purchases', 'photo_url', 'events')
+                  'zip_code', 'purchases', 'photo_url', 'events', 'tickets')
+
+
+class TicketSerializer(serializers.HyperlinkedModelSerializer):
+    events = serializers.HyperlinkedRelatedField(
+        view_name="event_detail",
+        many=True,
+        read_only=True
+    )
+
+    class Meta:
+        model = Ticket
+        fields = ('id', 'price', 'seating', 'number_of_tickets',
+                  'tickets_sold', 'events')
