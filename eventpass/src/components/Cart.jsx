@@ -56,7 +56,7 @@ export default function Cart(){
             )
           })
         }
-        <NavLink to="/" className="menu-item">continue shopping</NavLink>
+        <NavLink to="/" className="menu-item" style={{color: 'black'}}>continue shopping</NavLink>
       </div>
 
 

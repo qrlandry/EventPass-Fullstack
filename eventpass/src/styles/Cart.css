@@ -6,6 +6,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+  font-size: 2vh;
 }
 
 .my-bag {
@@ -13,6 +14,7 @@
  border: 1px solid rgb(213, 213, 213);
  padding: 1rem;
  margin-right: 5px;
+ overflow: hidden;
 }
 
 .cart-item {
@@ -33,6 +35,8 @@
   border: 1px solid rgb(209, 206, 206);  
   width: 40%;
   padding: 1rem;
+  overflow: hidden;
+
 }
 /* 
 .total-form {
@@ -55,12 +59,17 @@
 #discount-button {
   height: 4.2vh;
   padding: 2px;
-  width: 15%
+  width: auto;
+  padding: 8px;
+}
+
+#discount-button:hover {
+  background-color: rgb(134, 242, 134);
 }
 
 #checkout-button {
   height: 5vh;
-  width: 70%;
+  width: auto;
   border: rgb(197, 197, 197);
   background-color: rgb(95, 200, 95);
 }
@@ -68,4 +77,8 @@
 #checkout-button:hover {
   cursor: pointer;
   background-color: rgb(134, 242, 134);
+}
+
+.cart-return-home {
+  margin-top: 20px;
 }
