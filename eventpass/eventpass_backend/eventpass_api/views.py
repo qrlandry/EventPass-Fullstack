@@ -4,7 +4,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework import generics
 from .serializer import UserSerializer, VenueSerializer, EventSerializer, CustomerSerializer, TicketSerializer
-from .models import User, Venue, Event, Customer, Ticket
+from .models import User, Customer, Event, Ticket, Venue
 import jwt
 import datetime
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Venue, Event, Customer, Ticket
+from .models import User, Customer, Event, Ticket, Venue
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -40,22 +40,10 @@ class EventSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
-    customers = serializers.HyperlinkedRelatedField(
-        view_name="customer_detail",
-        many=True,
-        read_only=True
-    )
-
-    tickets = serializers.HyperlinkedRelatedField(
-        view_name="ticket_detail",
-        many=True,
-        read_only=True
-    )
-
     class Meta:
         model = Event
         fields = ('id', 'name', 'datetime', 'photo_url',
-                  'venues', 'customers', 'tickets')
+                  'venues')
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
@@ -84,13 +72,7 @@ class TicketSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
-    customers = serializers.HyperlinkedRelatedField(
-        view_name="customer_detail",
-        many=True,
-        read_only=True
-    )
-
     class Meta:
         model = Ticket
         fields = ('id', 'price', 'seating', 'number_of_tickets',
-                  'tickets_sold', 'events', 'customers')
+                  'tickets_sold', 'events')
