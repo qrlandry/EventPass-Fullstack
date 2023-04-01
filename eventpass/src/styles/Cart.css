@@ -1,0 +1,60 @@
+.cart-container {
+  color: black;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.my-bag {
+ width: 60%;
+ border: 2px solid black;
+ padding: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  padding: 1rem;
+  border: 1px solid rgb(184, 184, 184);
+  margin-bottom: 2px;
+
+}
+
+.item-details {
+  margin: 0;
+  text-align: left;
+  /* border: 1px solid black; */
+}
+
+.total {
+  border: 1px solid black;
+  width: 40%;
+  padding: 1rem;
+}
+/* 
+.total-form {
+  border: 1px solid black;
+  text-align: left;
+} */
+
+.discount {
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 0;
+  height: 4vh;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2vh;
+}
+#discount-input {
+  width: 60%;
+}
+
+#discount-button {
+  height: 4.2vh;
+  padding: 2px;
+  width: 15%
+}
+
+#checkout-button {
+  height: 5vh;
+  width: 70%;
+}
