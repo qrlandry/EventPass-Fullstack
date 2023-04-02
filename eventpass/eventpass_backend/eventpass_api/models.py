@@ -76,6 +76,8 @@ class Customer(models.Model):
         Event, on_delete=models.CASCADE, related_name='customers')
     ticket = models.ForeignKey(
         Ticket, on_delete=models.CASCADE, related_name='customers')
+    app_user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='customers', default=0)
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
