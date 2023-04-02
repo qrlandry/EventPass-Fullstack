@@ -59,10 +59,16 @@ class CustomerSerializer(serializers.HyperlinkedModelSerializer):
         read_only=True
     )
 
+    app_users = serializers.HyperlinkedRelatedField(
+        view_name="app_user",
+        many=True,
+        read_only=True
+    )
+
     class Meta:
         model = Customer
         fields = ('id', 'name', 'address', 'city', 'state',
-                  'zip_code', 'purchases', 'photo_url', 'events', 'tickets')
+                  'zip_code', 'purchases', 'photo_url', 'events', 'tickets', 'app_users')
 
 
 class TicketSerializer(serializers.HyperlinkedModelSerializer):
