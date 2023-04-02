@@ -27,6 +27,10 @@ function App() {
   //   }
   // }, []);
 
+  useEffect(() => {
+    console.log("THE USER IS ", user)
+  }, [user])
+
   return (
     <div className="App">
       <UserContext.Provider value=
