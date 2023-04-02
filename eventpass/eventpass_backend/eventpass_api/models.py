@@ -68,7 +68,7 @@ class Ticket(models.Model):
     tickets_sold = models.IntegerField()
 
     def __str__(self):
-        return self.price1
+        return self.price
 
 
 class Customer(models.Model):
