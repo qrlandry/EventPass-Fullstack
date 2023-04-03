@@ -1,8 +1,23 @@
 import Nav from "./Nav"
 import SearchBar from "./SearchBar"
 import '../styles/Home.css'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+
 
 export default function Home(){
+  const [ events, setEvents ] = useState(null)
+  const BASE_URL = "http://localhost:8000/api"
+
+  useEffect(()=>{
+    const getEvents = async() => {
+      const response = await axios.get(`${BASE_URL}/events`)
+      console.log('EVENTS RETURNED:', response.data)
+      setEvents(response.data)
+    }
+    getEvents()
+  }, [])
+
   return(
     <div className="home">
       <Nav />
