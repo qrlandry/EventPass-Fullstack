@@ -1,17 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
-
-class User(AbstractUser):
-    name = models.CharField(max_length=150)
-    email = models.EmailField(max_length=150, unique=True)
-    password = models.CharField(max_length=150)
-    username = None  # model.CharFiled()
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
-
-
 class UserManager(BaseUserManager):
     def create_user(self, email, name, password=None, **extra_fields):
         if not email:
@@ -27,11 +16,15 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, name, password, **extra_fields)
 
-        REQUIRED_FIELDS = ['name']
+class User(AbstractUser):
+    name = models.CharField(max_length=150)
+    email = models.EmailField(max_length=150, unique=True)
+    password = models.CharField(max_length=150)
+    username = None
 
-
-objects = UserManager()
-
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+    objects = UserManager()
 
 class Venue(models.Model):
     name = models.CharField(max_length=255)
