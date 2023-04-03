@@ -21,6 +21,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=150, unique=True)
     password = models.CharField(max_length=150)
     username = None
+    state = models.CharField(max_length=3, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
@@ -74,7 +75,6 @@ class Customer(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    state = models.CharField(max_length=150)
     zip_code = models.IntegerField()
     purchases = models.CharField(max_length=500)
     photo_url = models.CharField(max_length=500, default='a string')

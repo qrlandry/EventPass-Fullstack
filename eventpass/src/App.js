@@ -15,17 +15,23 @@ function App() {
     setLoggedIn(false);
     localStorage.clear();
   };
-  // const checkToken = async () => {
-  //   const user = await CheckSession();
-  //   setUser(user);
-  //   setLoggedIn(true);
-  // };
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     checkToken();
-  //   }
-  // }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      // Make a request to the server to verify the token
+      fetch('/api/user', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => setUser(data))
+        .catch(error => console.error(error));
+    }
+  }, []);
+
 
   useEffect(() => {
     console.log("THE USER IS ", user)
