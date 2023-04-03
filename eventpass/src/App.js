@@ -8,11 +8,12 @@ import Register from './components/Register.jsx'
 import Cart from './components/Cart';
 
 function App() {
-  const loggedIn = localStorage.getItem('loggedIn') === 'true'
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') === 'true');
   const [user, setUser] = useState(null);
   
   const handleLogOut = () => {
     localStorage.removeItem('loggedIn');
+    setLoggedIn(false);
   };
 
   useEffect(() => {
@@ -40,6 +41,7 @@ function App() {
     <div className="App">
       <UserContext.Provider value=
       {{ loggedIn,
+         setLoggedIn,
          user,
          setUser,
          handleLogOut, }}>
