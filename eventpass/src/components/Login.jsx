@@ -4,28 +4,32 @@ import { NavLink } from 'react-router-dom'
 import '../styles/Login.css'
 import { UserContext } from '../UserContext'
 import { SignInUser } from '../services/Auth'
+import Cookies from 'js-cookie';
 
-export default function Login(){
+
+export default function Login(props){
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({email: '', password: ''})
-  const { setUser } = useContext(UserContext);
-  const { setLoggedIn } = useContext(UserContext);
+  const { setUser, setLoggedIn } = useContext(UserContext);
+  console.log('UserContext:', { setUser, setLoggedIn });
 
   const handleChange = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
   }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const payload = await SignInUser(formValues);
-    setFormValues({ username: "", password: "" });
-    setUser(payload);
-    setLoggedIn(true);
-    localStorage.setItem('loggedIn', true);
-    navigate("/");
-    console.log("logged in!");
-  };
+ 
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const payload = await SignInUser(formValues, setUser);
+  console.log(payload);
+  Cookies.set('jwt', payload.jwt);
+  setFormValues({ username: "", password: "" });
+  setUser(payload);
+  setLoggedIn(true);
+  localStorage.setItem('loggedIn', true);
+  navigate("/");
+  console.log("logged in!");
+};
 
   return (
     <div className="signin-form">
