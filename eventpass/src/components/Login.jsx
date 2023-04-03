@@ -22,6 +22,7 @@ export default function Login(){
     setFormValues({ username: "", password: "" });
     setUser(payload);
     setLoggedIn(true);
+    localStorage.setItem('loggedIn', true);
     navigate("/");
     console.log("logged in!");
   };

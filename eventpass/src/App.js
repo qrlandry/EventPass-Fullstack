@@ -8,12 +8,12 @@ import Register from './components/Register.jsx'
 import Cart from './components/Cart';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') === 'true');
   const [user, setUser] = useState(null);
   
   const handleLogOut = () => {
+    localStorage.removeItem('loggedIn');
     setLoggedIn(false);
-    localStorage.clear();
   };
 
   useEffect(() => {
