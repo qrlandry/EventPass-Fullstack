@@ -53,6 +53,12 @@ export default function Nav(){
           <div className="cart">
             <NavLink to="/cart" className="menu-item">Cart</NavLink>
           </div> : null
+        }
+        {
+          loggedIn ? 
+          <div className="profile">
+            <NavLink to="/profile" className="menu-item">Profile</NavLink>
+          </div> : null
         }  
         {
           !loggedIn ? 
