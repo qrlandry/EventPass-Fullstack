@@ -25,6 +25,7 @@ export default function Cart(){
   const validPromoCodes = [
     'spring15', 'crowdsurf10', 'welcome15', 'employee25'
   ]
+  
   //usecontext for tickets added to cart
   const [ total, setTotal ] = useState(0)
   const [ totalDiscounted, setTotalDiscounted ] = useState(0)

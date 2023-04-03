@@ -1,5 +1,0 @@
-"id","price","seating","number_of_tickets","tickets_sold","event_id"
-1,150.00,General Admission,1000,500,1
-2,300.00,General Admission,1000,750,2
-3,100.00,General Admission,2000,1700,3
-4,50.00,General Admission,2000,50,4
