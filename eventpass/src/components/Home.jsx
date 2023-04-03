@@ -25,22 +25,22 @@ export default function Home(){
           <div className="featured-event-2">
             <img src="https://media.pitchfork.com/photos/633aed2d11e16738d909b698/master/w_1280%2Cc_limit/Arctic-Monkeys-Tour.jpg" alt="arctic monkeys" className="featured-event-2" style={{width: '13vw'}}/>
             <h3 style={{margin: '0'}}>Artic Monkeys</h3>
-            <button className="tickets">See Tickets</button>
+            <button className="tickets-2">See Tickets</button>
           </div>
           <div className="featured-event-2">
             <img src="https://variety.com/wp-content/uploads/2022/11/Screen-Shot-2022-11-01-at-5.07.37-AM.png?w=1024" alt="taylor swift" className="featured-event-2"  style={{width: '13vw'}}/>
             <h3 style={{margin: '0'}}>Taylor Swift</h3>
-            <button className="tickets">See Tickets</button>
+            <button className="tickets-2">See Tickets</button>
           </div>
           <div className="featured-event-2">
             <img src="https://media.pitchfork.com/photos/633aed2d11e16738d909b698/master/w_1280%2Cc_limit/Arctic-Monkeys-Tour.jpg" alt="arctic monkeys" className="featured-event-2" style={{width: '13vw'}}/>
             <h3 style={{margin: '0'}}>Artic Monkeys</h3>
-            <button className="tickets">See Tickets</button>
+            <button className="tickets-2">See Tickets</button>
           </div>
           <div className="featured-event-2">
             <img src="https://variety.com/wp-content/uploads/2022/11/Screen-Shot-2022-11-01-at-5.07.37-AM.png?w=1024" alt="taylor swift" className="featured-event-2"  style={{width: '13vw'}}/>
             <h3 style={{margin: '0'}}>Taylor Swift</h3>
-            <button className="tickets">See Tickets</button>
+            <button className="tickets-2">See Tickets</button>
           </div>    
         </div>
 

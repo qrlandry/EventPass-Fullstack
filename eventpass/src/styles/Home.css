@@ -55,6 +55,14 @@
   font-weight: bold;
 }
 
+.tickets-2 {
+  border: none;
+  background-color: blue;
+  padding: 1vh;
+  border-radius: 4px;
+  color: white;
+}
+
 .tonight-item {
   margin-right: 2vw;
 }
