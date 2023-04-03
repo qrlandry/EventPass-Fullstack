@@ -21,7 +21,7 @@ export default function Login(){
     const payload = await SignInUser(formValues);
     setFormValues({ username: "", password: "" });
     setUser(payload);
-    setLoggedIn(true);
+    localStorage.setItem('loggedIn', true);
     navigate("/");
     console.log("logged in!");
   };
