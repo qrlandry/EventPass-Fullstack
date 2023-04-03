@@ -1,0 +1,5 @@
+"id","name","address","city","state","zip_code","capacity","indoor","outdoor","photo_url"
+1,Raymond James Stadium,"4201 N Dale Mabry Hwy",Tampa,FL,33607,75000,false,true,https://images.squarespace-cdn.com/content/v1/5e3c5c5170ff61486283fb3b/1587570096777-3PWRDV69JZVZHX8RCIC2/Beauty+sunrise+field+.jpg?format=2500w
+2,Jannus Live,"200 First Ave N STE 206",St Petersburg,FL,33701,2000,false,true,https://www.jannuslive.com/wp-content/uploads/2019/01/j3.jpg
+3,Ruth Eckerd Hall,"1111 McMullen Booth Rd",Clearwater,FL,33759,2180,true,false,https://www.rutheckerdhall.com/assets/img/REH_slide-f4dc1bfae2.jpg
+4,Straz Center for the Performing Arts,"1010 N Macinnes Pl",Tampa,FL,33602,2600,true,false,https://i0.wp.com/blog.strazcenter.org/wp-content/uploads/2022/12/master-plan-1.jpg?w=1472&ssl=1

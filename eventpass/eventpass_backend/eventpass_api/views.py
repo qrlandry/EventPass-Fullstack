@@ -7,6 +7,12 @@ from .serializer import UserSerializer, VenueSerializer, EventSerializer, Custom
 from .models import User, Customer, Event, Ticket, Venue
 import jwt
 import datetime
+import stripe
+from django.shortcuts import render, redirect, get_object_or_404
+from django.conf import settings
+from django.urls import reverse
+from django.views.generic.base import View
+
 
 # Create and save new user instance to to the database
 
@@ -125,3 +131,26 @@ class TicketListView(generics.ListCreateAPIView):
 class TicketDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
+
+stripe.api_key = settings.STRIPE
+
+class TicketCheckoutView(View):
+    def post(self, request, ticket_id):
+        ticket = get_object_or_404(Ticket, id=ticket_id)
+
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'name': ticket.event.name + ' Ticket',
+                'description': ticket.seating,
+                'amount': int(ticket.price * 100),
+                'currency': 'usd',
+                'quantity': 1,
+            }],
+            success_url=request.build_absolute_uri(reverse('checkout_success')),
+            cancel_url=request.build_absolute_uri(reverse('checkout_cancel')),
+        )
+
+        # Redirect the user to the checkout page
+        return redirect(checkout_session.url) 
+

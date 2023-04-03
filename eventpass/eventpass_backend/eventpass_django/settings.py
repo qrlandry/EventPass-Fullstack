@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'eventpass_api',
     'rest_framework',
     'corsheaders',
+    'stripe',
 ]
+
+STRIPE = 'sk_test_51MrnikLc3T3MaUEyl7B451dYXIiYe6lH7ZOEkNNiF7apaQ0VV85BbZatUFpEsUo6wEgNu0ThPodH9QSabHegyTph00ATUpDpYB'
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
@@ -122,6 +125,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+SITE_URL = 'http://localhost:3000'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
