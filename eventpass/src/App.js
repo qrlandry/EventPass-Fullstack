@@ -7,6 +7,7 @@ import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import Cart from "./components/Cart";
 import Profile from "./components/Profile";
+import EventDetails from "./components/EventDetails";
 import { CheckSession } from "./services/Auth";
 import axios from "axios";
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/event/details/:id" element={<EventDetails />} />
           </Routes>
         </main>
         <footer>
