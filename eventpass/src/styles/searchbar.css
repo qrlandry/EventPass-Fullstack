@@ -6,7 +6,7 @@
   margin-right: auto;
   padding-left: 0;
   background-color: #282c34;
-  position: relative;
+  /* position: relative; */
 }
 .search-input {
   display: flex;
