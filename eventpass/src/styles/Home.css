@@ -1,107 +1,62 @@
 .home {
- margin-bottom: 20px;
+  font-size: 1.5vh;
 }
 
 .home-display {
-  text-align: left;
-  padding-left: 2rem;
-  margin-bottom: 0;
+  margin: 2px;
 }
 
-.third {
+.headliners {
   display: flex;
+  border: 1px solid black;
+  height: 50%;
+  padding: 1rem;
+  justify-content: space-between;
 }
 
-.featured-event {
+.headliner-main-container,
+.headliners-container{
+  width: 50%;
+  height: auto;
   /* border: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 60%;
-  padding: 2rem;
+  /* position: relative; */
+  padding: 1rem;
 }
 
-.featured-event-side {
-  width: 40%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  padding: 2rem; 
-  
-}
-
-.details {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+.headliner-main-container img,
+.headliners-container img {
   width: 100%;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  height: auto;
+}
+.home-image {
+  border: 1.5px solid rgb(224, 224, 224);
 }
 
-.details-1 {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-evenly;
-
+.home-image:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
 
-.tickets {
-  border: none;
-  background-color: blue;
-  padding: 1vh;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-}
 
-.tickets-2 {
-  border: none;
-  background-color: blue;
-  padding: 1vh;
-  border-radius: 4px;
-  color: white;
-}
 
-.tonight-item {
-  margin-right: 2vw;
-}
 
-#middle {
-  display: flex;
-  height: 30vh;
-  padding: 2rem;
-  justify-content: space-between;
-  overflow-x: auto;
-  /* width: 100%; */
-}
-.tonight-image {
-  max-height: 100%;
-  width: auto;
-}
 
-#bottom {
-  height: 40vh;
-  padding: 2rem;
-  justify-content: space-between;
 
-}
 
-.bottom-items {
-  display: flex;
-  /* flex-wrap: nowrap; */
-  overflow-x: auto;
-}
 
-.bottom-item {
-  margin-right: 2vw;
-}
 
-.bottom-image {
-  max-height: 80%;
-  width: auto;
-}
+/* @media only screen and (max-width: 880px) {
+  .headliners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .headliner-main-container,
+  .headliners-container {
+    width: 90%;
+    height: auto;
+  }
 
-.bottom-featured {
-  max-height: 100%;
-}
+} */
