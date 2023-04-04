@@ -3,7 +3,7 @@
 }
 
 .home-display {
-  margin: 2px;
+  margin: 5px;
 }
 
 .headliners {
@@ -38,6 +38,27 @@
   transition: opacity 0.3s;
 }
 
+
+.sports-container {
+  display: flex;
+  justify-content: space-evenly;
+  overflow-x: auto;
+  /* margin-left: 1vw;
+  margin-right: 1vw; */
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+
+.sport {
+  display: flex;
+  justify-content: space-evenly;
+  margin-right: 1vw;
+}
+
+.sport img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 
 
 

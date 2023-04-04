@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react'
 
 export default function Home(){
   const [ events, setEvents ] = useState(null)
-  const [ sportsUnique, setSportsUnique ] = useState(null)
   const BASE_URL = "http://localhost:8000/api"
 
   useEffect(()=>{
@@ -19,12 +18,6 @@ export default function Home(){
     getEvents()
   }, [])
 
-  useEffect(()=>{
-    const getSports = () => {
-      
-    }
-  },[events])
-
   return(
     <div className="home">
       <Nav />
@@ -34,18 +27,31 @@ export default function Home(){
           events? 
           <div className="headliners">
             <div className="headliner-main-container">
-              <img src={events[7]['photo_url']} alt="edc" className='home-image'/>
+              <img src={events[8]['photo_url']} alt="edc" className='home-image'/>
             </div>
             <div className="headliners-container">
-              <img src={events[14]['photo_url']} alt="odesza" className='home-image'/>
+              <img src={events[21]['photo_url']} alt="odesza" className='home-image'/>
             </div>
           </div> : null
       }
       <h2 className="home-display">Sports Tonight</h2>
+      <div className="sports-container">
+      {
+        events?.map((event) => {
+          if(event['category'] == 'sports'){
+            return(
+              <div className="sport">
+                <img src={event['photo_url']} alt={event['name']} style={{maxHeight: '200px'}}/>
+              </div>
+            )
+          }
+        })
+      }  
+      </div>
 
       <h2 className="home-display">Sold Out</h2>
       {
-          events? <img src={events[68]['photo_url']} alt="coachella" style={{width: '60%'}} className='home-image'/> : null
+          events? <img src={events[25]['photo_url']} alt="coachella" style={{width: '60%'}} className='home-image'/> : null
       }
 
     </div>
