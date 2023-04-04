@@ -30,8 +30,8 @@ export const SignInUser = async (data, setUser) => {
     const res = await Client.post("/login", data);
     const token = res.data.jwt;
     setUser(res.data.user);
-    setAuthToken(token); // Store the token in axios headers
-    localStorage.setItem('jwt', token); // Store the token in local storage
+    setAuthToken(token); 
+    localStorage.setItem('jwt', token); 
     return res.data;
   } catch (error) {
     console.error(error);
@@ -59,12 +59,35 @@ export const CheckSession = async () => {
   }
 };
 
+export const UpdateUser = async (userData) => {
+  const token = localStorage.getItem("jwt");
 
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const response = await Client.patch(
+      `/user`,
+      userData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
 
 export const LogoutUser = async () => {
   try {
     const res = await Client.post("/logout");
-    localStorage.removeItem('jwt'); // Remove the token from local storage
+    localStorage.removeItem('jwt');
     return res.data;
   } catch (error) {
     throw error;

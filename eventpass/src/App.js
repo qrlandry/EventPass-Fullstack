@@ -33,8 +33,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("THE USER IS ", user)
-  }, [user])
+    if (user !== null) {
+      console.log("THE USER IS ", user);
+    }
+  }, [user]);
 
   return (
     <div className="App">
