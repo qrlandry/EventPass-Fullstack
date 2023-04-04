@@ -43,7 +43,7 @@ export const CheckSession = async () => {
   try {
     if (localStorage.getItem("jwt")) {
       const response = await axios.get(
-        "http://localhost:8000/api/user",
+        "http://127.0.0.1:8000/api/user",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -59,7 +59,7 @@ export const CheckSession = async () => {
   }
 };
 
-export const UpdateUser = async (userData) => {
+export const UpdateUser = async (user_id, userData) => {
   const token = localStorage.getItem("jwt");
 
   if (!token) {
@@ -67,16 +67,11 @@ export const UpdateUser = async (userData) => {
   }
 
   try {
-    const response = await Client.patch(
-      `/user`,
-      userData,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
+    const response = await Client.patch(`/updateuser/${user_id}/`, userData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error(error);
