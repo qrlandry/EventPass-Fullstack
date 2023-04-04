@@ -42,10 +42,10 @@ export default function Home() {
       ) : null}
       <h2 className="home-display">Sports Tonight</h2>
       <div className="sports-container">
-        {events?.map((event) => {
-          if (event["category"] == "sports") {
+        {events?.map((event, index) => {
+          if (event["category"] === "sports") {
             return (
-              <div className="sport">
+              <div className="sport" key={index}>
                 <img
                   src={event["photo_url"]}
                   alt={event["name"]}
@@ -53,6 +53,8 @@ export default function Home() {
                 />
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </div>
