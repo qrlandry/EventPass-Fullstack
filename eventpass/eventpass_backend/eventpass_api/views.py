@@ -28,9 +28,9 @@ class RegisterView(APIView):
 
 
 class LoginView(APIView):
-    def post(self, req):
-        email = req.data['email']
-        password = req.data['password']
+    def post(self, request):
+        email = request.data['email']
+        password = request.data['password']
 
         user = User.objects.filter(email=email).first()
 
@@ -49,48 +49,40 @@ class LoginView(APIView):
 
         token = jwt.encode(payload, 'secret', algorithm='HS256')
 
-        response = Response()
-
-        response.set_cookie(key='jwt', value=token, httponly=True)
-        response.data = {
-            'jwt': token
-        }
-
-        return response
+        return Response({'jwt': token}, status=200)
 
 # Checks if the session is valid and will throw an exception if the token is expired or invalid
 
 
 class UserView(APIView):
-
-    def get(self, req):
-        token = req.COOKIES.get('jwt')
-
-        if not token:
-            raise AuthenticationFailed('Unauthenticated')
+    def get(self, request):
+        auth_header = request.headers.get('Authorization')
+        if not auth_header:
+            raise AuthenticationFailed('Authentication header missing')
 
         try:
+            token = auth_header.split(' ')[1]
             payload = jwt.decode(token, 'secret', algorithms=['HS256'])
         except jwt.ExpiredSignatureError:
-            raise AuthenticationFailed('Unauthenticated')
+            raise AuthenticationFailed('Token has expired')
+        except IndexError:
+            raise AuthenticationFailed('Token prefix missing')
+        except jwt.InvalidTokenError:
+            raise AuthenticationFailed('Invalid token')
 
         user = User.objects.filter(id=payload['id']).first()
+        if user is None:
+            raise AuthenticationFailed('User not found')
 
         serializer = UserSerializer(user)
-
-        return Response(serializer.data)
+        return Response(serializer.data, status=200)
 
 # Create a response and delete the JWT
 
 
 class LogoutView(APIView):
-    def post(self, req):
-        response = Response()
-        response.delete_cookie('jwt')
-        response.data = {
-            'message': 'success'
-        }
-        return response
+    def post(self, request):
+        return Response({'message': 'success'}, status=200)
 
 
 class VenueListView(generics.ListCreateAPIView):

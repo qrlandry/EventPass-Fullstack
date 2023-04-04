@@ -1,11 +1,10 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import '../styles/Login.css'
 import { UserContext } from '../UserContext'
 import { SignInUser } from '../services/Auth'
-import Cookies from 'js-cookie';
-
+import { CheckSession } from '../services/Auth'
 
 export default function Login(props){
   let navigate = useNavigate()
@@ -18,18 +17,28 @@ export default function Login(props){
     setFormValues({...formValues, [e.target.name]: e.target.value})
   }
  
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const payload = await SignInUser(formValues, setUser);
-  console.log(payload);
-  Cookies.set('jwt', payload.jwt);
-  setFormValues({ username: "", password: "" });
-  setUser(payload);
-  setLoggedIn(true);
-  localStorage.setItem('loggedIn', true);
-  navigate("/");
-  console.log("logged in!");
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = await SignInUser(formValues, setUser);
+      console.log(payload);
+      setFormValues({ email: "", password: "" });
+      setLoggedIn(true);
+      localStorage.setItem('loggedIn', true);
+      navigate("/");
+      console.log("logged in!");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const sessionData = CheckSession(setUser);
+    if (sessionData) {
+      setUser(sessionData.user);
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <div className="signin-form">

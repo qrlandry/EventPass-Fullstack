@@ -1,9 +1,7 @@
 import Client from "./api"
 import jwt_decode from "jwt-decode";
-import Cookies from 'js-cookie';
 import axios from "axios";
-
-const token = Cookies.get('jwt');
+const token = localStorage.getItem('jwt');
 console.log('Token:', token);
 
 if (token) {
@@ -33,7 +31,7 @@ export const SignInUser = async (data, setUser) => {
     const token = res.data.jwt;
     setUser(res.data.user);
     setAuthToken(token); // Store the token in axios headers
-    Cookies.set('jwt', token); // Store the token as a cookie
+    localStorage.setItem('jwt', token); // Store the token in local storage
     return res.data;
   } catch (error) {
     console.error(error);
@@ -43,22 +41,30 @@ export const SignInUser = async (data, setUser) => {
 
 export const CheckSession = async () => {
   try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      return null;
+    if (localStorage.getItem("jwt")) {
+      const response = await axios.get(
+        "http://localhost:8000/api/user",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        }
+      );
+      return response.data;
     }
-    const decodedToken = jwt_decode(token);
-    const user = decodedToken.user;
-    const res = await Client.get("/user");
-    return { ...res.data, user };
+    return null;
   } catch (error) {
-    throw error;
+    console.log(error);
+    return null;
   }
 };
+
+
 
 export const LogoutUser = async () => {
   try {
     const res = await Client.post("/logout");
+    localStorage.removeItem('jwt'); // Remove the token from local storage
     return res.data;
   } catch (error) {
     throw error;
