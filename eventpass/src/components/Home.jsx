@@ -1,59 +1,74 @@
-import Nav from "./Nav"
-import SearchBar from "./SearchBar"
-import '../styles/Home.css'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import Nav from "./Nav";
+import SearchBar from "./SearchBar";
+import "../styles/Home.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../services/api";
 
+export default function Home() {
+  const [events, setEvents] = useState(null);
 
-export default function Home(){
-  const [ events, setEvents ] = useState(null)
-  const [ sportsUnique, setSportsUnique ] = useState(null)
-  const BASE_URL = "http://localhost:8000/api"
+  useEffect(() => {
+    const getEvents = async () => {
+      const response = await axios.get(`${BASE_URL}/events`);
+      console.log("EVENTS RETURNED:", response.data);
+      setEvents(response.data);
+    };
+    getEvents();
+  }, []);
 
-  useEffect(()=>{
-    const getEvents = async() => {
-      const response = await axios.get(`${BASE_URL}/events`)
-      console.log('EVENTS RETURNED:', response.data)
-      setEvents(response.data)
-    }
-    getEvents()
-  }, [])
-
-  useEffect(()=>{
-    const getSports = () => {
-      
-    }
-  },[events])
-
-  return(
+  return (
     <div className="home">
       <Nav />
       <SearchBar />
       <h2 className="home-display">Headliners of the Week</h2>
-      {
-          events? 
-          <div className="headliners">
-            <div className="headliner-main-container">
-              <img src={events[7]['photo_url']} alt="edc" className='home-image'/>
-            </div>
-            <div className="headliners-container">
-              <img src={events[14]['photo_url']} alt="odesza" className='home-image'/>
-            </div>
-          </div> : null
-      }
+      {events ? (
+        <div className="headliners">
+          <div className="headliner-main-container">
+            <img
+              src={events[8]["photo_url"]}
+              alt="edc"
+              className="home-image"
+            />
+          </div>
+          <div className="headliners-container">
+            <img
+              src={events[21]["photo_url"]}
+              alt="odesza"
+              className="home-image"
+            />
+          </div>
+        </div>
+      ) : null}
       <h2 className="home-display">Sports Tonight</h2>
+      <div className="sports-container">
+        {events?.map((event) => {
+          if (event["category"] == "sports") {
+            return (
+              <div className="sport">
+                <img
+                  src={event["photo_url"]}
+                  alt={event["name"]}
+                  style={{ maxHeight: "200px" }}
+                />
+              </div>
+            );
+          }
+        })}
+      </div>
 
       <h2 className="home-display">Sold Out</h2>
-      {
-          events? <img src={events[68]['photo_url']} alt="coachella" style={{width: '60%'}} className='home-image'/> : null
-      }
-
+      {events ? (
+        <img
+          src={events[25]["photo_url"]}
+          alt="coachella"
+          style={{ width: "60%" }}
+          className="home-image"
+        />
+      ) : null}
     </div>
-
-
-  )
+  );
 }
-
 
 // <div className="third">
 // <div className="featured-event">
@@ -65,7 +80,6 @@ export default function Home(){
 //     </div>
 //     <button className="tickets">Tickets</button>
 //   </div>
-
 
 // </div>
 // <div className="featured-event-side">
@@ -88,11 +102,11 @@ export default function Home(){
 //     <img src="https://variety.com/wp-content/uploads/2022/11/Screen-Shot-2022-11-01-at-5.07.37-AM.png?w=1024" alt="taylor swift" className="featured-event-2"  style={{width: '13vw'}}/>
 //     <h3 style={{margin: '0'}}>Taylor Swift</h3>
 //     <button className="tickets-2">See Tickets</button>
-//   </div>    
+//   </div>
 // </div>
 
 // </div>
-// <h2 className="home-display" style={{marginTop: '0'}}>Nearly Sold Out</h2>  
+// <h2 className="home-display" style={{marginTop: '0'}}>Nearly Sold Out</h2>
 // <div className="third" id="middle">
 
 // <div className="tonight-item">
@@ -137,7 +151,7 @@ export default function Home(){
 
 // </div>
 
-// <h2 className="home-display">Comedy</h2> 
+// <h2 className="home-display">Comedy</h2>
 // <div className="third" id='bottom'>
 // <div className="bottom-items">
 
@@ -172,5 +186,5 @@ export default function Home(){
 // </div>
 
 // </div>
-// <h2 className="home-display" style={{textAlign: 'center', marginBottom: '1vh', marginTop: '0'}}>Coming Soon</h2> 
+// <h2 className="home-display" style={{textAlign: 'center', marginBottom: '1vh', marginTop: '0'}}>Coming Soon</h2>
 // <img src="https://i.ytimg.com/vi/cJAObWRmWvM/maxresdefault.jpg" alt="" style={{width: '80vw', marginBottom: '100px'}}/>
