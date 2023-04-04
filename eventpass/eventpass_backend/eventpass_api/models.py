@@ -46,6 +46,7 @@ class Event(models.Model):
     venue = models.ForeignKey(
         Venue, on_delete=models.CASCADE, related_name='events')
     name = models.CharField(max_length=500)
+    category = models.CharField(max_length=150, default='category')
     datetime = models.DateTimeField()
     photo_url = models.CharField(max_length=500, default='a string')
 
