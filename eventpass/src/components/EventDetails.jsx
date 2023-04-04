@@ -8,12 +8,16 @@ export default function EventDetails({ evts }) {
   let { id } = useParams();
 
   useEffect(() => {
-    let selectedEvent = evts[id];
-    console.log("SELECTED EVENT", selectedEvent);
-    setEvent(selectedEvent);
-
-    setEventId(selectedEvent.id);
-  }, [evts, id]);
+    const getSelectedEvent = async () => {
+      if (evts && evts.length > 0) {
+        let selectedEvent = evts.find(
+          (thisEvent) => thisEvent.id === parseInt(id)
+        );
+        setEvent(selectedEvent);
+      }
+    };
+    getSelectedEvent();
+  }, [id, evts]);
 
   return evt ? (
     <div className="detail">
