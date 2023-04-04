@@ -1,3 +1,3 @@
-export default function EventDetails(){
-  pass
+export default function EventDetails(props) {
+  return <div></div>;
 }

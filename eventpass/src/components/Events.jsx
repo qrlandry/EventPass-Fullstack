@@ -1,3 +1,3 @@
-export default function Events(){
-  pass
+export default function Events() {
+  return <div></div>;
 }

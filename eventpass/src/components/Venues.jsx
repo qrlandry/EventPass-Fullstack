@@ -1,3 +1,3 @@
-export default function Venues(){
-  pass
+export default function Venues() {
+  return <div></div>;
 }
