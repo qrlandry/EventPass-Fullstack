@@ -39,27 +39,35 @@
 }
 
 
-.sports-container {
+.sports-container,
+.upcoming-container {
   display: flex;
   justify-content: space-evenly;
   overflow-x: auto;
+  width: 100vw;
   /* margin-left: 1vw;
   margin-right: 1vw; */
   padding-left: 1vw;
   padding-right: 1vw;
 }
 
-.sport {
+.sport,
+.music {
   display: flex;
   justify-content: space-evenly;
   margin-right: 1vw;
 }
 
-.sport img:hover {
+.sport img:hover,
+.music img:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
+.upcoming-container {
+  display: flex;
+  overflow-x: auto;
+}
 
 
 
