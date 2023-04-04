@@ -1,39 +1,28 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../services/api";
-import axios from "axios";
 
-export default function EventDetails(){
-
-  let {id} = useParams()
-  const [allEvents, setAllEvents] = useState(null)
-  const [event, setEvent] = useState(null);
+export default function EventDetails({ evts }) {
+  const [evt, setEvent] = useState(null);
   const [eventId, setEventId] = useState(null);
 
-  useEffect(() => {  
-    const getEvents = async () => {
-      const response = await axios.get(`${BASE_URL}/events`);
-      console.log("EVENTS:", response.data);
-      setAllEvents(response.data);
-    };
-    getEvents();
-  }, []);
+  let { id } = useParams();
 
   useEffect(() => {
-    let selectedEvent = allEvents.find((event) => event.id === parseInt(id))
-    console.log("SELECTED EVENT", selectedEvent)
-    setEvent(selectedEvent)
+    let selectedEvent = evts[id];
+    console.log("SELECTED EVENT", selectedEvent);
+    setEvent(selectedEvent);
 
-    setEventId(selectedEvent.id)
-  },[allEvents,id])
-  
-  return event? (
+    setEventId(selectedEvent.id);
+  }, [evts, id]);
+
+  return evt ? (
     <div className="detail">
       <div className="detail-header">
-        <h2>{event.name}</h2>
-        <img src={event.photo_url} alt={event.name} />
+        <h2>{evt.name}</h2>
+        <img src={evt.photo_url} alt={evt.name} />
       </div>
     </div>
-  ) : <h3>No event found</h3>
-
+  ) : (
+    <h3>No event found</h3>
+  );
 }

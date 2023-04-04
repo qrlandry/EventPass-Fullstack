@@ -9,12 +9,17 @@ import Cart from "./components/Cart";
 import Profile from "./components/Profile";
 import EventDetails from "./components/EventDetails";
 import { CheckSession } from "./services/Auth";
-import axios from "axios";
+import Client from "./services/api";
+import { BASE_URL } from "./services/api";
 
 function App() {
-
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("loggedIn") === "true");
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem("loggedIn") === "true"
+  );
   const [user, setUser] = useState(null);
+  const [evts, setEvents] = useState(null);
+  const [venues, setVenues] = useState(null);
+  const [tickets, setTickets] = useState(null);
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
@@ -35,8 +40,35 @@ function App() {
   useEffect(() => {
     if (user !== null) {
       console.log("THE USER IS ", user);
-    }
-  }, [user]);
+    };
+  }, [user]);;
+
+  useEffect(() => {
+    const getEvents = async () => {
+      const response = await Client.get(`${BASE_URL}/events`);
+      console.log("EVENTS RETURNED:", response.data);
+      setEvents(response.data);
+    };
+    getEvents();
+  }, []);
+
+  useEffect(() => {
+    const getVenues = async () => {
+      const response = await Client.get(`${BASE_URL}/venues`);
+      console.log("VENUES RETURNED:", response.data);
+      setVenues(response.data);
+    };
+    getVenues();
+  }, []);
+
+  useEffect(() => {
+    const getTickets = async () => {
+      const response = await Client.get(`${BASE_URL}/tickets`);
+      console.log("TICKETS RETURNED:", response.data);
+      setTickets(response.data);
+    };
+    getTickets();
+  }, []);
 
   return (
     <div className="App">
@@ -47,10 +79,13 @@ function App() {
           <Routes>
             <Route path="signin" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home evts={evts} />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/event/details/:id" element={<EventDetails />} />
+            <Route
+              path="/event/details/:id"
+              element={<EventDetails evts={evts} />}
+            />
           </Routes>
         </main>
         <footer>
