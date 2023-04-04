@@ -1,88 +1,94 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckSession, UpdateUser } from "../services/Auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [updatedUser, setUpdatedUser] = useState(null);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [state, setState] = useState("");
   
-
     useEffect(() => {
-        const fetchUser = async () => {
-          const fetchedUser = await CheckSession();
-          setUser(fetchedUser);
-          setName(fetchedUser.name);
-          setEmail(fetchedUser.email);
-          setState(fetchedUser.state);
-        };
-    
-        fetchUser();
-      }, []);
-  
-      const handleUpdate = async (e) => {
-        e.preventDefault();
-        try {
-          const formData = new FormData();
-          if (user && user.data) {
-            if (user.data.name) {
-              formData.append("name", user.data.name);
-            }
-            if (user.data.email) {
-              formData.append("email", user.data.email);
-            }
-            if (user.data.state) {
-              formData.append("state", user.data.state);
-            }
-          }
-          await UpdateUser(formData);
-        } catch (error) {
-          console.error("Error updating profile: ", error);
-        }
+      const fetchUser = async () => {
+        const fetchedUser = await CheckSession();
+        setUser(fetchedUser);
+        setName(fetchedUser.name);
+        setEmail(fetchedUser.email);
+        setState(fetchedUser.state);
       };
-      
-  if (!user) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div>
-      <h1>Edit Profile</h1>
-      <form onSubmit={handleUpdate}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+  
+      fetchUser();
+      console.log('i am stinky cheese', CheckSession())
+    }, []);
+  
+    const handleNameChange = (event) => {
+      setName(event.target.value);
+    };
+  
+    const handleEmailChange = (event) => {
+      setEmail(event.target.value);
+    };
+  
+    const handleStateChange = (event) => {
+      setState(event.target.value);
+    };
+  
+    const handleUpdate = async (e, user) => {
+      e.preventDefault();
+      try {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("state", state);
+        await UpdateUser(user.id, formData);
+        setUser({ ...user, name, email, state });
+      } catch (error) {
+        console.error("Error updating profile: ", error);
+      }
+    };
+  
+    if (!user) {
+      return <div>Loading...</div>;
+    }
+  
+    return (
+      <div>
+        <h1>Edit Profile</h1>
+        <form onSubmit={(e) => handleUpdate(e, user)}>
           <div>
-          <label htmlFor="state">State:</label>
-          <input
-            type="text"
-            id="state"
-            name="state"
-            value={state}
-            onChange={(event) => setState(event.target.value)}
-          />
-        </div>
-        </div>
-        <button type="submit">Update</button>
-      </form>
-    </div>
-  );
-}
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <div>
+              <label htmlFor="state">State:</label>
+              <input
+                type="text"
+                id="state"
+                name="state"
+                value={state}
+                onChange={handleStateChange}
+              />
+            </div>
+          </div>
+          <button type="submit">Update</button>
+          <button onClick={() => navigate(-1)}> Back </button>
+        </form>
+      </div>
+    );
+  }

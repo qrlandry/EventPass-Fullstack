@@ -12,6 +12,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.urls import reverse
 from django.views.generic.base import View
+from django.core.exceptions import PermissionDenied
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create and save new user instance to to the database
@@ -54,11 +56,16 @@ class LoginView(APIView):
 # Checks if the session is valid and will throw an exception if the token is expired or invalid
 
 class UserView(APIView):
-    def get(self, request):
+    def get_object(self, user_id):
+        try:
+            return User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            raise Http404
+            
+    def get(self, request): 
         auth_header = request.headers.get('Authorization')
         if not auth_header:
             raise AuthenticationFailed('Authentication header missing')
-
         try:
             token = auth_header.split(' ')[1]
             payload = jwt.decode(token, 'secret', algorithms=['HS256'])
@@ -76,7 +83,14 @@ class UserView(APIView):
         serializer = UserSerializer(user)
         return Response(serializer.data, status=200)
 
-    def patch(self, request):
+
+class UserUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
+    def patch(self, request, user_id):
+        print('Permissions:', self.permission_classes)
+        user = User.objects.filter(id=user_id).first()
+        if user is None:
+            raise Http404
         auth_header = request.headers.get('Authorization')
         if not auth_header:
             raise AuthenticationFailed('Authentication header missing')
@@ -91,9 +105,13 @@ class UserView(APIView):
         except jwt.InvalidTokenError:
             raise AuthenticationFailed('Invalid token')
 
-        user = User.objects.filter(id=payload['id']).first()
-        if user is None:
+        authenticated_user = User.objects.filter(id=payload['id']).first()
+        if authenticated_user is None:
             raise AuthenticationFailed('User not found')
+
+        # check if authenticated user is the same as the user being updated
+        if authenticated_user.id != user.id:
+            raise PermissionDenied('You do not have permission to update this user')
 
         serializer = UserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
