@@ -2,16 +2,16 @@
   font-size: 1.5vh;
 }
 
-.home-display {
+/* .home-display {
   margin: 5px;
-}
+} */
 
 .headliners {
   display: flex;
   border: 1px solid black;
   height: 50%;
   padding: 1rem;
-  justify-content: space-between;
+  /* justify-content: space-around; */
 }
 
 .headliner-main-container,
@@ -20,13 +20,13 @@
   height: auto;
   /* border: 1px solid black; */
   /* position: relative; */
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 .headliner-main-container img,
 .headliners-container img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 .home-image {
   border: 1.5px solid rgb(224, 224, 224);
@@ -34,8 +34,8 @@
 
 .home-image:hover {
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.3s;
+  /* opacity: 0.7;
+  transition: opacity 0.3s; */
 }
 
 
@@ -61,7 +61,7 @@
 .sport img:hover,
 .music img:hover {
   cursor: pointer;
-  opacity: 0.7;
+  /* opacity: 0.7; */
 }
 
 .upcoming-container {
