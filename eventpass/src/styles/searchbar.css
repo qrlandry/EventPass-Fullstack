@@ -1,12 +1,14 @@
 .search-container {
   width: 100vw;
   height: 17vh;
+  height: 30vh;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 3vh;
   background-color: #282c34;
 }
+
 .search-input {
   display: flex;
   background-color: white;
@@ -16,22 +18,25 @@
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+
 .searchbar {
   font-size: 2vh;
   border-radius: 2px;
-  height: 1.5vh;
+  height: 2.5vh;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 .search-icon {
   color: rgb(94, 94, 94);
+  margin-top: 10px;
   margin-left: auto;
-  margin-right: 2px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .headline {
-  margin-top: 2px;
+  margin-top: 10px;
 }
 
 .search-results {
@@ -40,7 +45,7 @@
   margin-right: auto;
 }
 
-.results-container ul{
+.results-container ul {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -62,4 +67,10 @@
 .result-card img {
   height: 10px;
   width: auto;
+}
+
+.logo {
+  height: 5.25rem;
+  width: fit-content;
+  padding-top: 0.525rem;
 }
