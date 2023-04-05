@@ -36,7 +36,6 @@ export default function Home({ evts }) {
                 alt="acdc"
                 className="headliner-image"
                 key={evts[10].id}
-                onClick={() => showEvent(evts[17].id)}
               />
               <div className="headliner-info">
                 <h3>{evts[10].name}</h3>

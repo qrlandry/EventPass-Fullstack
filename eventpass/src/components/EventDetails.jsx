@@ -72,10 +72,8 @@ export default function EventDetails({ evts, tickets, venues }) {
     <div className="detail">
       <div className="detail-header">
         {/* <h2>{evt.name}</h2> */}
-        <img src={evt.photo_url} alt={evt.name} style={{height: '50%', width: '50%'}}/>
-        
-        
-        
+        <img src={evt.photo_url} alt={evt.name} style={{height: '50%', width: 'auto'}}/>
+        <NavLink to="/" className="back-arrow">← back</NavLink>        
       </div>
       <div className="event-tickets">
         {
@@ -85,18 +83,19 @@ export default function EventDetails({ evts, tickets, venues }) {
           </div> : 
           <div className="ticket-info">
             <h4>{evt.name}</h4>
-            <h4>Price: ${ticket.price}</h4>
-            <h4>Seating: {ticket.seating}</h4>
-            <h4>Due to selfish people we only allow a maximum three tickets per customer.</h4>
-            <h4>Tickets remaining: {ticket.number_of_tickets - ticket.tickets_sold}</h4>
-            <div className="ticket-count">
-              <h4>Tickets: {numTicketsReserved}</h4>
-              <h3 onClick={increaseTickets} style={{marginRight: '5px', marginLeft: '25px'}} className="plus-minus">+</h3><h3 onClick={decreaseTickets} className="plus-minus">-</h3>
-            </div>
-            <div className="bottom-right">
-              <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
-              <button onClick={addToCart} className="add-to-cart">Add to Cart</button>
-              <NavLink to="/" className="back-arrow" style={{color: 'black', display: 'block'}}>← back</NavLink>
+            <h5>Price: ${ticket.price}</h5>
+            <h5>Seating: {ticket.seating}</h5>
+            <h6>Limit 3 tickets per customer</h6>
+            <h5>Tickets left: <h6 style={{display: 'inline-block', marginLeft: '1vw'}}>{ticket.number_of_tickets - ticket.tickets_sold-numTicketsReserved}</h6></h5>
+            <div className="event-details-bottom" style={{marginTop: '15vh'}}>
+              <div className="ticket-count">
+                <h4>Tickets: {numTicketsReserved}</h4>
+                <h3 onClick={increaseTickets} style={{marginRight: '5px', marginLeft: '30px'}} className="plus-minus">+</h3><h3 onClick={decreaseTickets} className="plus-minus" style={{marginRight: '10px'}}>-</h3>
+              </div>
+              <div className="bottom-right">
+                <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
+                <button onClick={addToCart} className="add-to-cart">Add to Cart</button>
+              </div>
             </div>
           </div>
         }
