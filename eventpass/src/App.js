@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "./UserContext.jsx";
+import { CartContext } from "./CartContext";
 import Home from "./components/Home";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
@@ -20,6 +21,7 @@ function App() {
   const [evts, setEvents] = useState(null);
   const [venues, setVenues] = useState(null);
   const [tickets, setTickets] = useState(null);
+  const [cartItems, setCartItems] = useState([])
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
@@ -76,17 +78,19 @@ function App() {
         value={{ loggedIn, setLoggedIn, user, setUser, handleLogOut }}
       >
         <main>
-          <Routes>
-            <Route path="signin" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="/" element={<Home evts={evts} />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route
-              path="/event/details/:id"
-              element={<EventDetails evts={evts} />}
-            />
-          </Routes>
+          <CartContext.Provider value={{cartItems, setCartItems}}>
+            <Routes>
+              <Route path="signin" element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="/" element={<Home evts={evts} />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/event/details/:id"
+                element={<EventDetails evts={evts} tickets={tickets} venues={venues}/>}
+              />
+            </Routes>
+          </CartContext.Provider>
         </main>
         <footer>
           <div className="footer">
