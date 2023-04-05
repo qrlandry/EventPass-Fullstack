@@ -34,7 +34,6 @@ export default function SearchBar(props){
     if (searchInput.length === 0){
       setSearchResults([])
     } else if (searchInput.length > 0) {
-      
       console.log('DETECTED INPUT', searchInput)
       for( let i = 0; i < props.evts.length; i++ ) {
         if (props.evts[i].name.includes(searchInput)){
