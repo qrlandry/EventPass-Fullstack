@@ -12,8 +12,8 @@ export default function Home({ evts }) {
 
   return (
     <div className="home">
-      <Nav />
-      <SearchBar />
+      <Nav evts={evts}/>
+      {/* <SearchBar evts={evts}/> */}
       <h2 className="home-display">Headliners of the Week</h2>
       {evts ? (
         <div className="headliners">

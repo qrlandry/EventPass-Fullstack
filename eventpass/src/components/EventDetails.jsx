@@ -28,9 +28,9 @@ export default function EventDetails({ evts, tickets, venues }) {
         let selectedTicket = tickets.find(
           (thisTicket) => thisTicket.id === parseInt(id)
         );
-        console.log('THIS EVENT IS', selectedEvent);
+        // console.log('THIS EVENT IS', selectedEvent);
         setEvent(selectedEvent);
-        console.log('THIS TICKET IS', selectedTicket)
+        // console.log('THIS TICKET IS', selectedTicket)
         setTickets(selectedTicket);
       }
     };

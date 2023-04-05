@@ -4,9 +4,11 @@
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5vh;
   padding-left: 0;
   background-color: #282c34;
-  /* position: relative; */
+  /* position: fixed; */
+
 }
 .search-input {
   display: flex;
@@ -32,5 +34,34 @@
 }
 
 .headline {
-  margin-top: 0;
+  margin-top: 2px;
+}
+
+.results-container ul{
+  display: flex;
+  flex-direction: column;
+  /* background-color: white; */
+  /* position: relative; */
+}
+
+.result-card {
+  width: 61%;
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+  /* position: relative; */
+}
+
+.result-card:hover {
+  opacity: 1;
+  background-color: rgb(226, 226, 226);
+  cursor: pointer;
+}
+
+.result-card img {
+  height: 10px;
+  width: auto;
 }
