@@ -48,7 +48,7 @@ function App() {
   useEffect(() => {
     const getEvents = async () => {
       const response = await Client.get(`${BASE_URL}/events`);
-      console.log("EVENTS RETURNED:", response.data);
+      // console.log("EVENTS RETURNED:", response.data);
       setEvents(response.data);
     };
     getEvents();
@@ -57,7 +57,7 @@ function App() {
   useEffect(() => {
     const getVenues = async () => {
       const response = await Client.get(`${BASE_URL}/venues`);
-      console.log("VENUES RETURNED:", response.data);
+      // console.log("VENUES RETURNED:", response.data);
       setVenues(response.data);
     };
     getVenues();
@@ -66,7 +66,7 @@ function App() {
   useEffect(() => {
     const getTickets = async () => {
       const response = await Client.get(`${BASE_URL}/tickets`);
-      console.log("TICKETS RETURNED:", response.data);
+      // console.log("TICKETS RETURNED:", response.data);
       setTickets(response.data);
     };
     getTickets();

@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { useContext, useState } from "react"
 import { UserContext } from "../UserContext"
 import { LogoutUser } from '../services/Auth'
+import SearchBar from "./SearchBar"
 
 // import SearchBar from "./SearchBar"
 import '../styles/Nav.css'
 
 
-export default function Nav(){
+export default function Nav(props){
   
   const navigate = useNavigate()
   const [ onSignInPage, setOnSignInPage ] = useState(false)
@@ -71,7 +72,7 @@ export default function Nav(){
         }
         </div>
       </div>
-
+      <SearchBar evts={props.evts}/>
 
     </div>
   )
