@@ -1,0 +1,76 @@
+.detail {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: black;
+  font-family: san-serif;
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  position: relative;
+}
+
+.detail-header img {
+  position: absolute;
+  top: 25%;
+  right: 25%;
+}
+
+/* .detail-header h4 {
+  position: absolute; 
+  bottom: 10%;
+  right: 50%;
+  color: white;
+} */
+
+.event-tickets {
+  border: 1px solid black;
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  width: 25%;
+  background-color: rgb(224, 224, 238);
+  padding: 1rem;
+  text-align: left;
+}
+
+.ticket-count {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.add-to-cart {
+  border: none;
+  border-radius: 6px;
+  height: 25px;
+  background-color: blue;
+  color: white;
+}
+.plus-minus {
+  margin-left: 5px;
+}
+
+.back-arrow {
+  margin-top: 2vh;
+}
+
+.back-arrow:hover,
+.plus-minus:hover {
+  cursor: pointer;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 15vh;
+  right: 10px;
+  width: 25%;
+  padding: 1rem;
+}

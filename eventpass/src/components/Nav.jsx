@@ -56,7 +56,7 @@ export default function Nav(){
         }
         {
           loggedIn ? 
-          <div className="profile">
+          <div className="profile" style={{marginRight: '1vw'}}>
             <NavLink to="/profile" className="menu-item">Profile</NavLink>
           </div> : null
         }  

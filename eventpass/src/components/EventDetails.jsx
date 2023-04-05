@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import { UserContext } from "../UserContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/EventDetails.css';
 
 export default function EventDetails({ evts, tickets, venues }) {
   const [evt, setEvent] = useState(null);
@@ -65,14 +66,16 @@ export default function EventDetails({ evts, tickets, venues }) {
       total: (numTicketsReserved * ticket.price).toFixed(2)
     }])
     loggedIn ? navigate('/cart') : navigate('/signin')
-    
   }
 
   return evt ? (
     <div className="detail">
       <div className="detail-header">
-        <h2>{evt.name}</h2>
-        <img src={evt.photo_url} alt={evt.name} style={{height: '400px', width: 'auto'}}/>
+        {/* <h2>{evt.name}</h2> */}
+        <img src={evt.photo_url} alt={evt.name} style={{height: '50%', width: '50%'}}/>
+        
+        
+        
       </div>
       <div className="event-tickets">
         {
@@ -82,21 +85,23 @@ export default function EventDetails({ evts, tickets, venues }) {
           </div> : 
           <div className="ticket-info">
             <h4>{evt.name}</h4>
-            {/* <h5>Venue: </h5> */}
-            <h5>Tickets remaining: {ticket.number_of_tickets - ticket.tickets_sold}</h5>
-            <h6>Price: ${ticket.price}</h6>
-            <h6>Seating: {ticket.seating}</h6>
-            <h6>Due to selfish people we only allow a maximum three tickets per customer.</h6>
+            <h4>Price: ${ticket.price}</h4>
+            <h4>Seating: {ticket.seating}</h4>
+            <h4>Due to selfish people we only allow a maximum three tickets per customer.</h4>
+            <h4>Tickets remaining: {ticket.number_of_tickets - ticket.tickets_sold}</h4>
+            <div className="ticket-count">
+              <h4>Tickets: {numTicketsReserved}</h4>
+              <h3 onClick={increaseTickets} style={{marginRight: '5px', marginLeft: '25px'}} className="plus-minus">+</h3><h3 onClick={decreaseTickets} className="plus-minus">-</h3>
+            </div>
+            <div className="bottom-right">
+              <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
+              <button onClick={addToCart} className="add-to-cart">Add to Cart</button>
+              <NavLink to="/" className="back-arrow" style={{color: 'black', display: 'block'}}>← back</NavLink>
+            </div>
           </div>
         }
       </div>
-      <div className="add-to-cart">
-        <h4>Tickets: {numTicketsReserved}</h4>
-        <h3 onClick={increaseTickets}>+</h3><h3 onClick={decreaseTickets}>-</h3>
-        <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
-        
-        <button onClick={addToCart} style={{marginBottom: '200px'}}>Add to Cart</button>
-      </div>
+
     </div>
   ) : (
     <h3>No event found</h3>

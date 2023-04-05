@@ -61,7 +61,7 @@ export default function Cart(){
           cartItems.map((item,index) => {
             return(
               <div className="cart-item">
-                <img src={item.photo_url} alt={item.event} style={{width: '10vw', height: '10vh', marginRight: '1rem'}}/>
+                <img src={item.photo_url} alt={item.event} style={{width: '10vw', height: '11vh', marginRight: '1rem'}}/>
                 <div className="item-details">
                   <p className="item-details">${item.pricePerTicket}</p>
                   <p className="item-details">{item.event}</p>
