@@ -95,6 +95,35 @@ export default function Home({ evts }) {
         </div>
       </div>
 
+      <div className="comedy-container">
+        <h2 className="home-display">Comedy</h2>
+        <div className="comedy">
+          {
+            evts?.map((evt, index) => {
+              if (
+                evt["category"] === "comedy"
+              ) {
+                return (
+                  <div className="comedy-item" key={index}>
+                    <img
+                      src={evt["photo_url"]}
+                      alt={evt["name"]}
+                      style={{ width: "100%", marginTop: "2vh" }}
+                      onClick={() => showEvent(evt.id)}
+                      className="home-image"
+                    />
+                    <h5 style={{margin: '0'}}>{evt['name']}</h5>
+                  </div>
+                );
+              } else {
+                return null;
+              }
+              
+            })
+          }
+        </div>
+      </div>
+
       <div className="soldout-container">
         <h2 className="home-display">Sold Out</h2>
         {evts ? (
