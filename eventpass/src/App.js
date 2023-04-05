@@ -9,6 +9,7 @@ import Register from "./components/Register.jsx";
 import Cart from "./components/Cart";
 import Profile from "./components/Profile";
 import EventDetails from "./components/EventDetails";
+import Checkout from "./components/Checkout"
 import { CheckSession } from "./services/Auth";
 import Client from "./services/api";
 import { BASE_URL } from "./services/api";
@@ -85,6 +86,7 @@ function App() {
               <Route path="/" element={<Home evts={evts} />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/checkout" element={<Checkout/>}/>
               <Route
                 path="/event/details/:id"
                 element={<EventDetails evts={evts} tickets={tickets} venues={venues}/>}

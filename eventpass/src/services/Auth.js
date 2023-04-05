@@ -61,13 +61,13 @@ export const CheckSession = async () => {
 
 export const UpdateUser = async (user_id, userData) => {
   const token = localStorage.getItem("jwt");
-
+  console.log('im am not 403:', token)
   if (!token) {
     return null;
   }
 
   try {
-    const response = await Client.patch(`/updateuser/${user_id}/`, userData, {
+    const response = await Client.patch(`http://127.0.0.1:8000/api/updateuser/${user_id}/`, userData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

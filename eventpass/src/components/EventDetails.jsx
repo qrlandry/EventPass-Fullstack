@@ -39,9 +39,16 @@ export default function EventDetails({ evts, tickets, venues }) {
 
   const increaseTickets = () => {
     console.log("clicked one more")
-    if (numTicketsReserved<3 && numTicketsReserved < (ticket.number_of_tickets - ticket.tickets_sold)){
+    if (
+      numTicketsReserved<3 && 
+      numTicketsReserved < (ticket.number_of_tickets - ticket.tickets_sold)
+      ){
       let reserved = numTicketsReserved + 1
       setNumTicketsReserved(reserved)
+
+      let updatedTicket = { ...ticket };
+      updatedTicket.tickets_sold += 1;
+      setTickets(updatedTicket);
     } else {
       console.log("max num of tickets reserved")
     }
@@ -52,12 +59,17 @@ export default function EventDetails({ evts, tickets, venues }) {
     if (numTicketsReserved > 0) {
       let reserved = numTicketsReserved - 1
       setNumTicketsReserved(reserved)
+
+      let updatedTicket = { ...ticket };
+      updatedTicket.tickets_sold -= 1;
+      setTickets(updatedTicket);
     }
   }
 
   const addToCart = () => {
     console.log("adding to cart")
     setCartItems(cartItems => [...cartItems,{
+      id: ticket.id,
       event: evt.name,
       photo_url: evt.photo_url,
       date: evt.datetime,
