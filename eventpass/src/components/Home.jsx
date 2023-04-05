@@ -23,7 +23,7 @@ export default function Home({ evts }) {
               alt="odesza"
               className="home-image"
               key={evts[9].id}
-              onClick={() => showEvent(evts[8].id)}
+              onClick={() => showEvent(evts[9].id)}
               // style={{height: '200px'}}
             />
           </div>
@@ -33,7 +33,7 @@ export default function Home({ evts }) {
               alt="arctic monkeys"
               className="home-image"
               key={evts[21].id}
-              onClick={() => showEvent(evts[32].id)}
+              onClick={() => showEvent(evts[33].id)}
             />
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function Home({ evts }) {
                   src={evt["photo_url"]}
                   alt={evt["name"]}
                   style={{ maxHeight: "200px" }}
-                  onClick={() => showEvent(evt.id - 1)}
+                  onClick={() => showEvent(evt.id)}
                 />
               </div>
             );
@@ -74,7 +74,7 @@ export default function Home({ evts }) {
                   src={evt["photo_url"]}
                   alt={evt["name"]}
                   style={{ maxHeight: "200px" }}
-                  onClick={() => showEvent(evt.id - 1)}
+                  onClick={() => showEvent(evt.id)}
                 />
               </div>
             );
@@ -91,7 +91,7 @@ export default function Home({ evts }) {
           alt="coachella"
           style={{ width: "60%" }}
           className="home-image"
-          onClick={() => showEvent(evts[24].id)}
+          onClick={() => showEvent(evts[25].id)}
         />
       ) : null}
     </div>

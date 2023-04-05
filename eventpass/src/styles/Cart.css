@@ -14,7 +14,7 @@
  border: 1px solid rgb(213, 213, 213);
  padding: 1rem;
  margin-right: 5px;
- overflow: hidden;
+ overflow: auto;
 }
 
 .cart-item {
