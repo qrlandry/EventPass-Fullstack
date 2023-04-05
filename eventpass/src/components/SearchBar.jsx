@@ -1,5 +1,5 @@
 //search bar
-import "../styles/SearchBar.css";
+import "../styles/searchbar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ export default function SearchBar(props) {
       let tempResults = [];
       console.log("DETECTED INPUT", searchInput);
       for (let i = 0; i < props.evts.length; i++) {
-        if (props.evts[i].name.includes(searchInput)) {
+        if (props.evts[i].name.toLowerCase().startsWith(searchInput)) {
           tempResults.push(props.evts[i]);
         }
       }
@@ -66,7 +66,7 @@ export default function SearchBar(props) {
         {!searchResults ? null : (
           <div className="results-container">
             <ul>
-              {searchResults.slice(0, 1).map((result) => (
+              {searchResults.slice(0, 2).map((result) => (
                 <li
                   key={result.id}
                   className="result-card"
