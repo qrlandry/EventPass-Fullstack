@@ -102,7 +102,7 @@ export default function EventDetails({ evts, tickets, venues }) {
             <div className="event-details-bottom" style={{marginTop: '15vh'}}>
               <div className="ticket-count">
                 <h4>Tickets: {numTicketsReserved}</h4>
-                <h3 onClick={increaseTickets} style={{marginRight: '5px', marginLeft: '30px'}} className="plus-minus">+</h3><h3 onClick={decreaseTickets} className="plus-minus" style={{marginRight: '10px'}}>-</h3>
+                <h3 onClick={decreaseTickets}  style={{marginRight: '5px', marginLeft: '30px'}} className="plus-minus" >-</h3><h3 onClick={increaseTickets} style={{marginRight: '10px'}} className="plus-minus">+</h3>
               </div>
               <div className="bottom-right">
                 <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
