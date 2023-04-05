@@ -16,7 +16,7 @@ export default function SearchBar(props){
   const [ searchResults, setSearchResults ] = useState([])
 
   useEffect(() => {
-    console.log("SEARCH BAR PROPS", props.evts)
+    console.log("SEARCH BAR PROPS DETECTED", props.evts)
   },[props])
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function SearchBar(props){
   return(
       
     <div className="search-container">
-      <h2 className='headline'>No hidden fees, ever.</h2>
+      <h2 className='headline' style={{paddingTop: '5px'}}>No hidden fees, ever.</h2>
       <div className="search-input">
         <input type="text" className="searchbar" placeholder="Search thousands of memorable events" onChange={handleChange}/>
         <div className="search-icon"><SearchIcon/></div>
@@ -62,7 +62,7 @@ export default function SearchBar(props){
         <div className="results-container">
           <ul>
           {
-            searchResults.slice(0,2).map((result) => (
+            searchResults.slice(0,1).map((result) => (
               <li key={result.id} className='result-card' onClick={()=>showEvent(result.id)}>
                 <img src={result.photo_url} alt={result.name} />
                 <p>{result.name}</p>

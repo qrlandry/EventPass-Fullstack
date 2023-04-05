@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.main {
+  width: 100vw;
+}
+
 .headline {
   margin-top: 4vh;
   margin-bottom: 3vh;

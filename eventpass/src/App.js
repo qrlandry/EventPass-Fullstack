@@ -77,7 +77,7 @@ function App() {
       <UserContext.Provider
         value={{ loggedIn, setLoggedIn, user, setUser, handleLogOut }}
       >
-        <main>
+        <main className="main">
           <CartContext.Provider value={{cartItems, setCartItems}}>
             <Routes>
               <Route path="signin" element={<Login />} />
