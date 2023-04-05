@@ -28,20 +28,19 @@ export default function SearchBar(props) {
   }, [searchResults]);
 
   useEffect(() => {
-    if (searchInput.length === 0){
-      setSearchResults([])
+    if (searchInput.length === 0) {
+      setSearchResults([]);
     } else if (searchInput.length > 0) {
       let tempResults = [];
-      console.log('DETECTED INPUT', searchInput)
-      for( let i = 0; i < props.evts.length; i++ ) {
-        if (props.evts[i].name.includes(searchInput)){
-          tempResults.push(props.evts[i])
+      console.log("DETECTED INPUT", searchInput);
+      for (let i = 0; i < props.evts.length; i++) {
+        if (props.evts[i].name.includes(searchInput)) {
+          tempResults.push(props.evts[i]);
         }
       }
-      setSearchResults(tempResults)
-    } 
-  },[searchInput])
-
+      setSearchResults(tempResults);
+    }
+  }, [searchInput]);
 
   const handleChange = (e) => {
     setSearchInput(e.target.value);

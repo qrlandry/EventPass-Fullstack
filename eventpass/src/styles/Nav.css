@@ -8,19 +8,22 @@
 .nav-links {
   display: flex;
   width: 100%;
-  font-size: 1.5vh;
+  font-size: 1.25rem;
   font-weight: bold;
   background-color: #282c34;
   position: fixed;
   top: 0;
-  justify-content: space-between;
-  padding: 0.5rem;
+  justify-content: space-around;
+  padding-top: 1.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .top-right {
   display: flex;
   justify-content: flex-end;
   margin-right: 1rem;
+  margin-left: 5rem;
 }
 
 .cart {
@@ -30,12 +33,10 @@
 .menu-item {
   text-decoration: none;
   color: white;
-  
 }
 
 .nav-links {
   /* display: flex; */
-
 }
 
 ul {
