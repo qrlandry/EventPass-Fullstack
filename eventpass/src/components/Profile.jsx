@@ -87,7 +87,7 @@ export default function Profile() {
             </div>
           </div>
           <button type="submit">Update</button>
-          <button onClick={() => navigate(-1)}> Back </button>
+          <button onClick={() => navigate("/")}> Back </button>
         </form>
       </div>
     );

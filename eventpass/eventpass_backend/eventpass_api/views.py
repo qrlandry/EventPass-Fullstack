@@ -15,7 +15,6 @@ from django.views.generic.base import View
 from django.core.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 
-
 # Create and save new user instance to to the database
 
 
@@ -87,11 +86,12 @@ class UserView(APIView):
 class UserUpdateView(APIView):
     permission_classes = [IsAuthenticated]
     def patch(self, request, user_id):
-        print('Permissions:', self.permission_classes)
+        print('User ID:')
         user = User.objects.filter(id=user_id).first()
         if user is None:
             raise Http404
         auth_header = request.headers.get('Authorization')
+        print('Authentication Header:')
         if not auth_header:
             raise AuthenticationFailed('Authentication header missing')
 
@@ -165,26 +165,3 @@ class TicketListView(generics.ListCreateAPIView):
 class TicketDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
-
-stripe.api_key = settings.STRIPE
-
-class TicketCheckoutView(View):
-    def post(self, request, ticket_id):
-        ticket = get_object_or_404(Ticket, id=ticket_id)
-
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'name': ticket.event.name + ' Ticket',
-                'description': ticket.seating,
-                'amount': int(ticket.price * 100),
-                'currency': 'usd',
-                'quantity': 1,
-            }],
-            success_url=request.build_absolute_uri(reverse('checkout_success')),
-            cancel_url=request.build_absolute_uri(reverse('checkout_cancel')),
-        )
-
-        # Redirect the user to the checkout page
-        return redirect(checkout_session.url) 
-

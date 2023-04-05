@@ -20,5 +20,4 @@ urlpatterns = [
     path('tickets', views.TicketListView.as_view(), name='ticket_list'),
     path('ticket/details/<int:pk>',
          views.TicketDetailView.as_view(), name='ticket_detail'),
-    path('create-checkout-session', views.TicketCheckoutView.as_view(), name='ticket_checkout')
 ]

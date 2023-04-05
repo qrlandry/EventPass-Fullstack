@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { CartContext } from '../CartContext'
 import '../styles/Cart.css'
+import axios from 'axios'
 
 export default function Cart(){
-
+  const navigate = useNavigate()
   const { cartItems, setCartItems } = useContext(CartContext);
 
 
@@ -46,11 +47,11 @@ export default function Cart(){
     }
   }
 
-
   //need to convert this into a crUd: update function to remove tickets from user's tickets table
   const handleCancel = (index) => {
     setCartItems(cartItems.filter((_,i) => i !== index))
   }
+
 
   return (
     <div className="cart-container">
@@ -102,9 +103,8 @@ export default function Cart(){
     
         {/* need to create handlesubmit function to redirect to checkout component for stripe */}
         {/* take total and total discounted state to checkout page */}
-        <button id="checkout-button">PROCEED TO CHECKOUT</button>
+        <button id="checkout-button" onClick={() => navigate("/checkout")}>PROCEED TO CHECKOUT</button>
       </div>
-
     </div>
   )
 }
