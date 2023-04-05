@@ -1,91 +1,73 @@
-.home {
-  font-size: 1.5vh;
+.headliners-container,
+.sports-container,
+.upcoming-shows-container,
+.soldout-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 95vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* .home-display {
-  margin: 5px;
-} */
+.home-display {
+  margin-bottom: 0;
+}
 
 .headliners {
   display: flex;
-  border: 1px solid black;
-  height: 50%;
-  padding: 1rem;
-  /* justify-content: space-around; */
+  width: 100%;
+  height: 80%;
 }
 
-.headliner-main-container,
-.headliners-container{
-  width: 50%;
-  height: auto;
-  /* border: 1px solid black; */
-  /* position: relative; */
-  /* padding: 1rem; */
+.headliner-image {
+  height: 70%;
+  display: flex;
 }
 
-.headliner-main-container img,
-.headliners-container img {
-  width: auto;
-  height: 100%;
+.headliner-info {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  width: 90%;
+  margin-top: 2rem;
 }
-.home-image {
-  border: 1.5px solid rgb(224, 224, 224);
+
+.ticket-button {
+  margin: 0;
+  padding: 0;
+  height: 75%;
+  padding: 0.5em;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgb(10, 129, 233);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 2vw;
+}
+
+.ticket-button:hover {
+  background-color: rgb(34, 187, 80);
+  cursor: pointer;
+}
+
+.sports,
+.upcoming-container {
+  display: flex;
+  margin-top: 3px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.music,
+.sport {
+  display: flex;
+  margin-right: 1vw;
 }
 
 .home-image:hover {
   cursor: pointer;
-  /* opacity: 0.7;
-  transition: opacity 0.3s; */
+  opacity: 0.8;
+  transition: opacity 0.2s;
 }
-
-
-.sports-container,
-.upcoming-container {
-  display: flex;
-  justify-content: space-evenly;
-  overflow-x: auto;
-  width: 100vw;
-  /* margin-left: 1vw;
-  margin-right: 1vw; */
-  padding-left: 1vw;
-  padding-right: 1vw;
-}
-
-.sport,
-.music {
-  display: flex;
-  justify-content: space-evenly;
-  margin-right: 1vw;
-}
-
-.sport img:hover,
-.music img:hover {
-  cursor: pointer;
-  /* opacity: 0.7; */
-}
-
-.upcoming-container {
-  display: flex;
-  overflow-x: auto;
-}
-
-
-
-
-
-
-
-/* @media only screen and (max-width: 880px) {
-  .headliners {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  .headliner-main-container,
-  .headliners-container {
-    width: 90%;
-    height: auto;
-  }
-
-} */
