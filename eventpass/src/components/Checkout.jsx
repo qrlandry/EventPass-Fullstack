@@ -1,16 +1,17 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../CartContext'
 
 export default function Checkout(){
   const navigate = useNavigate()
   const { cartItems, setCartItems } = useContext(CartContext);
-
   const [isProcessing, setIsProcessing] = useState(false)
   const [isError, setIsError] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const total = cartItems.reduce((acc, item) => acc + parseFloat(item.total), 0);
+  const [discount, setDiscount] = useState(0)
 
+  const total = cartItems.reduce((acc, item) => acc + parseFloat(item.total), 0);
+  const discountedTotal = (total * (1 - discount / 100)).toFixed(2);
 
   const handlePurchase = async () => {
     setIsProcessing(true)
@@ -24,6 +25,19 @@ export default function Checkout(){
       setIsProcessing(false)
     }
   }
+
+  const handleKeyUp = (event) => {
+    if (event.key === "ArrowUp") {
+      setDiscount(15)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keyup", handleKeyUp)
+    return () => {
+      document.removeEventListener("keyup", handleKeyUp)
+    }
+  })
 
   return (
     <div className="checkout-container">
@@ -42,7 +56,8 @@ export default function Checkout(){
             <>
               {isError && <p className="error-message">Payment failed. Please try again.</p>}
               <p>Enter your payment details:</p>
-              <p>Total cost: ${total.toFixed(2)}</p>
+              <h4>Total cost: ${discountedTotal}</h4>
+              {discount > 0 && <p>You got a {discount}% discount!</p>}
               <form onSubmit={handlePurchase}>
                 <label htmlFor="cardNumber">Card Number</label>
                 <input type="text" id="cardNumber" required />
@@ -59,8 +74,3 @@ export default function Checkout(){
     </div>
   )
 }
-
-
-
-
-
