@@ -32,6 +32,12 @@ export default function Checkout(){
     }
   }
 
+  const handleCardNumberChange = (event) => {
+    let value = event.target.value.replace(/\D/g, '')
+    value = value.replace(/(.{4})/g, '$1 ')
+    event.target.value = value.trim()
+  }
+
   useEffect(() => {
     document.addEventListener("keyup", handleKeyUp)
     return () => {
@@ -60,11 +66,24 @@ export default function Checkout(){
               {discount > 0 && <p>You got a {discount}% discount!</p>}
               <form onSubmit={handlePurchase}>
                 <label htmlFor="cardNumber">Card Number</label>
-                <input type="text" id="cardNumber" required />
+                <input type="text" id="cardNumber" 
+                placeholder='ex. 4242 4242 4242 4242' 
+                pattern="\d{4}\s?\d{4}\s?\d{4}\s?\d{4}" 
+                maxLength={19} 
+                onChange={handleCardNumberChange}
+                required/>
                 <label htmlFor="expirationDate">Expiration Date</label>
-                <input type="text" id="expirationDate" required />
+                <input type="text" id="expirationDate" 
+                placeholder='ex. MM/YY' 
+                pattern="(0[1-9]|1[0-2])\/[0-9]{2}" 
+                maxLength={5}
+                required />
                 <label htmlFor="cvv">CVV</label>
-                <input type="text" id="cvv" required />
+                <input type="text" id="cvv" 
+                placeholder='ex. 424' 
+                pattern="\d{2,3}" 
+                maxLength={3}
+                required />
                 <button type="submit">Purchase</button>
               </form>
             </>
