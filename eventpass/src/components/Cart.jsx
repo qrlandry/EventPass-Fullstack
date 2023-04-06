@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { CartContext } from '../CartContext'
 import '../styles/Cart.css'
-import axios from 'axios'
+
 
 export default function Cart(){
   const navigate = useNavigate()
@@ -22,14 +22,12 @@ export default function Cart(){
   const [ discountApplied, setDiscountApplied ] = useState(null)
 
   const calculateTotal = () => {
-    let totalPrice = 0
-    for(let i = 0; i < cartItems.length; i++){
-    totalPrice += parseFloat(cartItems[i]['total'])
-    }
-    setTotal(totalPrice)
-    isDiscounted ? setTotalDiscounted((totalPrice * (100 - discountApplied)/100).toFixed(2)) : 
-    setTotalDiscounted(totalPrice)
-  }
+    const totalPrice = cartItems.reduce((acc, item) => acc + parseFloat(item.total), 0);
+    setTotal(totalPrice);
+    isDiscounted
+      ? setTotalDiscounted((totalPrice * (100 - discountApplied) / 100).toFixed(2))
+      : setTotalDiscounted(totalPrice.toFixed(2));
+  };
 
   useEffect(() => {
     calculateTotal()
