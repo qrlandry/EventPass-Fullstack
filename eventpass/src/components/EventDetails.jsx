@@ -98,14 +98,14 @@ export default function EventDetails({ evts, tickets, venues }) {
             <h5>Price: ${ticket.price}</h5>
             <h5>Seating: {ticket.seating}</h5>
             <h6>Limit 3 tickets per customer</h6>
-            <h5>Tickets left: <h6 style={{display: 'inline-block', marginLeft: '1vw'}}>{ticket.number_of_tickets - ticket.tickets_sold-numTicketsReserved}</h6></h5>
+            <h5>Tickets left: <h6 style={{display: 'inline-block', marginLeft: '1vw'}}>{ticket.number_of_tickets - ticket.tickets_sold}</h6></h5>
             <div className="event-details-bottom" style={{marginTop: '15vh'}}>
               <div className="ticket-count">
                 <h4>Tickets: {numTicketsReserved}</h4>
                 <h3 onClick={increaseTickets} style={{marginRight: '5px', marginLeft: '30px'}} className="plus-minus">+</h3><h3 onClick={decreaseTickets} className="plus-minus" style={{marginRight: '10px'}}>-</h3>
               </div>
               <div className="bottom-right">
-                <h4>Total: {(numTicketsReserved * ticket.price).toFixed(2)}</h4>
+                <h4>Total: ${(numTicketsReserved * ticket.price).toFixed(2)}</h4>
                 <button onClick={addToCart} className="add-to-cart">Add to Cart</button>
               </div>
             </div>

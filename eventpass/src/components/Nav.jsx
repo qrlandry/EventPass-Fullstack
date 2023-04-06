@@ -34,17 +34,17 @@ export default function Nav(props) {
               <NavLink to="/" className="menu-item" style={{fontStyle: 'italic'}}>EventPass </NavLink>
             </li> */}
             <li>
-              <NavLink to="/concerts" className="menu-item">
+              <NavLink to="/concerts" className="menu-item" style={{opacity: '0'}}>
                 Concerts
               </NavLink>
             </li>
             <li>
-              <NavLink to="/sports" className="menu-item">
+              <NavLink to="/sports" className="menu-item" style={{opacity: '0'}}>
                 Sports
               </NavLink>
             </li>
             <li>
-              <NavLink to="/comedy" className="menu-item">
+              <NavLink to="/comedy" className="menu-item" style={{opacity: '0'}}>
                 Comedy
               </NavLink>
             </li>
