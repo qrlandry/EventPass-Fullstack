@@ -2,7 +2,7 @@
 
 EventPass is your one-stop-shop for all live event ticket distribution needs designed to compete with the likes of TicketMaster and StubHub. 
 
-![EventPass Logo](./eventpass/src/images/logo-no-background.png)
+![EventPass Logo](./eventpass/src/images/logo-filled.png)
 
 "No hidden fees, ever." - The EventPass Team
 
