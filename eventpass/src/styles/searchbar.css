@@ -1,6 +1,6 @@
 .search-container {
   width: 100vw;
-  height: 30vh;
+  height: 32vh;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -71,5 +71,5 @@
 .logo {
   height: 5.25rem;
   width: fit-content;
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
