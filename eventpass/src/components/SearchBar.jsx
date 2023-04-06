@@ -1,5 +1,5 @@
 //search bar
-import "../styles/searchbar.css";
+import "../styles/SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +48,10 @@ export default function SearchBar(props) {
   return (
     <div className="search-container">
       <img src={logo} alt="eventpass-logo" className="logo" />
-      <h2 className="headline" style={{ paddingTop: "10px" }}>
+      <h2
+        className="headline"
+        style={{ paddingTop: "20px", paddingBottom: "25px" }}
+      >
         No hidden fees, ever.
       </h2>
       <div className="search-input">

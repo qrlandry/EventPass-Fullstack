@@ -14,21 +14,19 @@
   flex-direction: column;
   width: 75%;
   height: 100%;
-  position: relative;
 }
 
 .detail-header img {
   position: absolute;
   top: 25%;
-  right: 25%;
+  right: 30%;
 }
 
-/* .detail-header h4 {
-  position: absolute; 
-  bottom: 10%;
-  right: 50%;
-  color: white;
-} */
+.event-image-details {
+  display: flexbox;
+  flex-direction: column;
+  width: 700px;
+}
 
 .event-tickets {
   position: absolute;
@@ -43,7 +41,6 @@
 .ticket-count {
   display: flex;
   flex-direction: row;
-
 }
 
 .add-to-cart {

@@ -10,6 +10,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.home {
+  background-color: rgb(212, 212, 212);
+}
+
 .home-display {
   margin-bottom: 0;
   text-align: left;
@@ -17,7 +22,6 @@
 
 .headliner-image,
 .home-image {
-
   height: 100%;
   object-fit: cover;
 }
@@ -96,7 +100,6 @@
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
-
 
 .home-image {
 }
