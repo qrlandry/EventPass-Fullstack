@@ -70,12 +70,14 @@ export default function Checkout() {
                 </p>
               )}
               <div className="total">
-                <p>Enter your payment details:</p>
+                
                 <h4>Total cost: ${discountedTotal}</h4>
                 {discount > 0 && <p>You got a {discount}% discount!</p>}
               </div>
               <form onSubmit={handlePurchase}>
                 <div class="input-container">
+                <h3>Enter your payment details:</h3>
+                <br/>
                   <label htmlFor="cardNumber">Card Number</label>
                   <input
                     type="text"
