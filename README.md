@@ -2,7 +2,7 @@
 
 EventPass is your one-stop-shop for all live event ticket distribution needs designed to compete with the likes of TicketMaster and StubHub. 
 
-[EventPass Logo](./eventpass/src/images/logo-no-background.png)
+![EventPass Logo](./eventpass/src/images/logo-no-background.png)
 
 "No hidden fees, ever." - The EventPass Team
 
@@ -10,7 +10,7 @@ EventPass is your one-stop-shop for all live event ticket distribution needs des
 
 EventPass is a single page full-stack application with full CRUD functionality designed with React for the front-end and Django for the back-end using PostgresSQL for database management. 
 
-[EventPass Landing Page](./eventpass/src/images/landing-page.png)
+![EventPass Landing Page](./eventpass/src/images/landing-page.png)
 
 ## Get Started
 
